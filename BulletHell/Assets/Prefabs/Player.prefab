@@ -392,8 +392,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 0
+  reloading: 0
   fireTimer: 0
   fireSpeed: 10
+  ammoCounter: {fileID: 0}
+  ammo: 20
+  ammoLimit: 20
   bullet: {fileID: 1589969812533524, guid: 5624a110488f00347b9e21c57ca09e03, type: 2}
   target: {fileID: 1438109864212478}
 --- !u!114 &114282893645060080
