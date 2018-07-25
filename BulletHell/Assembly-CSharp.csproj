@@ -61,8 +61,14 @@
      <Compile Include="Assets\Scripts\AmmoPickUp.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Enemy\Guard.cs" />
+     <Compile Include="Assets\Scripts\Enemy\GuardVisionCone.cs" />
      <Compile Include="Assets\Scripts\FaceDirection.cs" />
+     <Compile Include="Assets\Scripts\InventorySelect.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
+     <Compile Include="Assets\Scripts\Rotate.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad\GameProgress.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad\SaveLoad.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
      <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />

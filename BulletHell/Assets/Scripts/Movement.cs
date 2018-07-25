@@ -12,31 +12,20 @@ public class Movement : MonoBehaviour {
     */
 
 	public float speed = 2;                         //Character Speed
-	public float gravity = 10;
-	public float pushForce = 0.1f;
+	public float gravity = 10;						//How Fast You Fall (Set Really High, Its Sorta Just For Going Down Ramps At This Point)
+	public float pushForce = 0.1f;					//How Much You Can Push Stuff
 
-	public Rigidbody rb;                            //Rigidbody Reference
+	public bool notdead;							//Whether Dead Or Not
 
-	public Vector3 respawn;                         //Respawn Location                  Set at Start in CharacterSelect
-	public Quaternion respawnRotation;              //Respawn Rotation                  Set at Start in CharacterSelect
+	public Vector3 moveDirection;					//Where Moving To
 
-	public bool notdead;
-
-	public Vector3 moveDirection;
-
-	// Use this for initialization
 	void Start () {
-        //Set Variables
-		rb = GetComponent<Rigidbody> ();
+        
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
         //Movement
-
-        ///////////////////////////////////
-        
-            //Movement Relative To Camera
 		CharacterController controller = GetComponent<CharacterController>();
 			
 		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -49,22 +38,9 @@ public class Movement : MonoBehaviour {
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move(moveDirection * Time.deltaTime);
 	}
+		
 
-
-
-
-    //Respawn
-	void RespawnAction () {
-		transform.position = respawn;
-		transform.rotation = respawnRotation;
-		notdead = true;
-
-        GetComponent<Rigidbody> ().velocity = Vector3.zero;
-        
-		transform.eulerAngles = Vector3.zero;
-		GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-	}
-
+	// PUUUUUUUUSH
 	void OnTriggerStay (Collider hit)
 	{
 		Rigidbody body = hit.gameObject.GetComponent<Rigidbody> ();
@@ -72,6 +48,5 @@ public class Movement : MonoBehaviour {
 		if (body != null && body.isKinematic == false) {
 			body.AddForceAtPosition (new Vector3 (moveDirection.x, 0, moveDirection.z) * pushForce, transform.position, ForceMode.Impulse);
 		}
-		Debug.Log ("IM PUSHING");
 	}
 }

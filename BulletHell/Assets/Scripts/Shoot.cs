@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Shoot : MonoBehaviour {
 
 	public bool canShoot;
-	public bool reloading;
+
 	public int fireTimer;
 	public int fireSpeed;
+
 	public Text ammoCounter;
 	public int ammo;
 	public int ammoLimit;
@@ -32,7 +33,7 @@ public class Shoot : MonoBehaviour {
 			}
 		}
 
-		if (fireTimer > fireSpeed && reloading == false)
+		if (fireTimer > fireSpeed)
 			canShoot = true;
 
 		fireTimer++;

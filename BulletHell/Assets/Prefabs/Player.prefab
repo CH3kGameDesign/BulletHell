@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4729913384407098}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 20399107828154856}
   - component: {fileID: 124270333089036354}
   - component: {fileID: 81529017809810684}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 135927562285386640}
   - component: {fileID: 23887936118677398}
   - component: {fileID: 114569006606029268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 23544952701816292}
   - component: {fileID: 114288082131896142}
   - component: {fileID: 114242393209272492}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 33253192017114162}
   - component: {fileID: 65295885799564436}
   - component: {fileID: 23775151479850988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,8 @@ GameObject:
   - component: {fileID: 136378769862461536}
   - component: {fileID: 114282893645060080}
   - component: {fileID: 143210693576596144}
-  m_Layer: 0
+  - component: {fileID: 114335821268733636}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -392,7 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 0
-  reloading: 0
   fireTimer: 0
   fireSpeed: 10
   ammoCounter: {fileID: 0}
@@ -414,9 +414,6 @@ MonoBehaviour:
   speed: 9
   gravity: 900
   pushForce: 0.05
-  rb: {fileID: 0}
-  respawn: {x: 0, y: 0, z: 0}
-  respawnRotation: {x: 0, y: 0, z: 0, w: 0}
   notdead: 1
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &114288082131896142
@@ -431,6 +428,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1438109864212478}
+--- !u!114 &114335821268733636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1845170867174722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f21d15647d58f47b27a3267b4a8c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeSlot: 0
 --- !u!114 &114569006606029268
 MonoBehaviour:
   m_ObjectHideFlags: 1

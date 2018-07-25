@@ -25,7 +25,6 @@ public class Bullet : MonoBehaviour {
 			if (body != null && body.isKinematic == false) {
 				body.AddForceAtPosition (transform.forward * pushForce, transform.position, ForceMode.Impulse);
 			}
-			Debug.Log ("IM PUSHING");
 			Destroy (this.gameObject);
 		}
 
