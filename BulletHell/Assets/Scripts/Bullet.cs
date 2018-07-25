@@ -10,10 +10,16 @@ public class Bullet : MonoBehaviour {
     public Vector3 shotOrigin;
 
     public GameObject damageCounter;
-    public int damage = 2;
+    public int damageMin = 2;
+	public int damageMax = 2;
+
+	private float preDamage;
+	public int damage;
 
 	void Start () {
         shotOrigin = transform.position;
+		preDamage = Random.Range (damageMin, damageMax);
+		damage = Mathf.RoundToInt (preDamage);
 	}
 
 	// Update is called once per frame
