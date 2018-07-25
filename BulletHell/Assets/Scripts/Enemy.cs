@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-	void Start () {
-
-	}
-	
+    public int Health;
+    	
 	// Update is called once per frame
-	void FixedUpdate () {
-		
+	void Update () {
+		if (Health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
 	}
 }

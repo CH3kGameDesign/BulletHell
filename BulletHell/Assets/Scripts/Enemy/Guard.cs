@@ -26,11 +26,15 @@ public class Guard : MonoBehaviour {
 
     public Vector3 playersLastKnownPosition;    	//Where To Go To When Chasing
 
+    private int chaseTimer = 0;
+    private int randomPathTimer = 0;
+
     
 
 	//Link The NavMeshAgent Component
     void Start () {
         navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navAgent.destination = transform.position;
     }
 
 	//Moment to moment Patrolling/Chasing
@@ -39,15 +43,27 @@ public class Guard : MonoBehaviour {
         if (patrolMode == true)
         {
             chaseModeMarker.SetActive(false);															//Turn Off Chase Marker (Spinning Red Marker Above Head
-            navAgent.destination = path[nextPathPos].transform.position;       							//Move to next patrol place
 
-			//If close to Patrol Point move to next Patrol Point
-            if (Vector3.Distance(transform.position, path[nextPathPos].transform.position) < 0.5f)		
+            if (path[nextPathPos] != null)
             {
-                nextPathPos++;
-                if (nextPathPos == path.Count)
+                navAgent.destination = path[nextPathPos].transform.position;
+                //If close to Patrol Point move to next Patrol Point
+                if (Vector3.Distance(transform.position, path[nextPathPos].transform.position) < 0.5f)
                 {
-                    nextPathPos = 0;
+
+                    nextPathPos++;
+                    if (nextPathPos == path.Count)
+                    {
+                        nextPathPos = 0;
+                    }
+                }
+            } else
+            {
+                randomPathTimer++;
+                if (randomPathTimer > 20)
+                {
+                    navAgent.destination = new Vector3(transform.position.x + Random.Range(-2, 2), transform.position.y, transform.position.z + Random.Range(-2, 2));
+                    randomPathTimer = 0;
                 }
             }
         }
@@ -60,11 +76,17 @@ public class Guard : MonoBehaviour {
             patrolMode = false;
             Debug.Log("Guard Chasing");
 
-			//If close to Player's Last Position invoke ReturnToPath
+            //If close to Player's Last Position invoke ReturnToPath
             if (Vector3.Distance(transform.position, playersLastKnownPosition) < 0.5f)
             {
-                Invoke("ReturnToPath", 2);
+                chaseTimer++;
+                if (chaseTimer > 120)
+                {
+                    Invoke("ReturnToPath", 0);
+                }
             }
+            else
+                chaseTimer = 0;
         }
     }
 
@@ -73,8 +95,16 @@ public class Guard : MonoBehaviour {
     void ReturnToPath()                
     {
         chaseMode = false;
-        navAgent.destination = path[nextPathPos].transform.position;
+        if (path[nextPathPos] != null)
+        {
+            navAgent.destination = path[nextPathPos].transform.position;
+        } else
+        {
+            navAgent.destination = new Vector3(transform.position.x + Random.Range(-2, 2), transform.position.y, transform.position.z + Random.Range(-2, 2));
+        }
+        
         Debug.Log("Guard Returning to path");
         patrolMode = true;
+        GetComponentInChildren<GuardVisionCone>().chasing = false;
     }
 }

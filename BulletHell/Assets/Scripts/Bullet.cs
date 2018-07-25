@@ -7,8 +7,13 @@ public class Bullet : MonoBehaviour {
 	public float bulletSpeed = 20;
 	public float pushForce = 1;
 
-	void Start () {
+    public Vector3 shotOrigin;
 
+    public GameObject damageCounter;
+    public int damage = 2;
+
+	void Start () {
+        shotOrigin = transform.position;
 	}
 
 	// Update is called once per frame
@@ -19,6 +24,20 @@ public class Bullet : MonoBehaviour {
 
 	public void OnTriggerStay(Collider other)
 	{
+        if (other.tag == "Enemy")
+        {
+            if (other.GetComponentInChildren<GuardVisionCone>().chasing == false)
+            {
+                other.GetComponent<Guard>().chaseMode = true;
+                other.GetComponent<Guard>().patrolMode = false;
+                other.GetComponent<Guard>().playersLastKnownPosition = shotOrigin;
+                other.GetComponentInChildren<GuardVisionCone>().chasing = true;
+                other.GetComponentInChildren<GuardVisionCone>().chaseePosition = shotOrigin;
+            }
+            GameObject thisDamageCounter = Instantiate(damageCounter, transform.position + new Vector3 (0, 2, 0), Quaternion.Euler(new Vector3(80, 0, 0)));
+            thisDamageCounter.GetComponent<TextMesh>().text = damage.ToString();
+            other.GetComponent<Enemy>().Health -= damage;
+        }
 		if (other.tag != "Player") {
 			Rigidbody body = other.gameObject.GetComponent<Rigidbody> ();
 
