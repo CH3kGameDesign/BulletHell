@@ -112,6 +112,6 @@ MonoBehaviour:
   shotOrigin: {x: 0, y: 0, z: 0}
   damageCounter: {fileID: 1604838222413208, guid: 23269e33a5592af498405348f97e23d1,
     type: 2}
-  damageMin: 1
-  damageMax: 4
+  damageMin: 15
+  damageMax: 26
   damage: 2
