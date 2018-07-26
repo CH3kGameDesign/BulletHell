@@ -115,3 +115,5 @@ MonoBehaviour:
   damageMin: 15
   damageMax: 26
   damage: 2
+  shakeDuration: 0.1
+  shakeAmount: 0.3

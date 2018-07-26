@@ -16,14 +16,23 @@ public class Bullet : MonoBehaviour {
 	private float preDamage;
 	public int damage;
 
+    //Camera Shake
+    public float shakeDuration;
+    public float shakeAmount;
+    private Camera cameraMain;
+
 	void Start () {
         shotOrigin = transform.position;
 		preDamage = Random.Range (damageMin, damageMax);
 		damage = Mathf.RoundToInt (preDamage);
-	}
 
-	// Update is called once per frame
-	void FixedUpdate () {
+        cameraMain = Camera.main;
+        cameraMain.GetComponent<CameraController>().shakeAmount = shakeAmount;
+        cameraMain.GetComponent<CameraController>().shakeDuration = shakeDuration;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
 		transform.position += transform.forward * Time.deltaTime * bulletSpeed;
 		Destroy (this.gameObject, 3);
 	}
@@ -43,6 +52,7 @@ public class Bullet : MonoBehaviour {
             GameObject thisDamageCounter = Instantiate(damageCounter, transform.position + new Vector3 (0, 2, 0), Quaternion.Euler(new Vector3(80, 0, 0)));
             thisDamageCounter.GetComponent<TextMesh>().text = damage.ToString();
             other.GetComponent<Enemy>().Health -= damage;
+
         }
 		if (other.tag != "Player") {
 			Rigidbody body = other.gameObject.GetComponent<Rigidbody> ();
@@ -50,7 +60,9 @@ public class Bullet : MonoBehaviour {
 			if (body != null && body.isKinematic == false) {
 				body.AddForceAtPosition (transform.forward * pushForce, transform.position, ForceMode.Impulse);
 			}
-			Destroy (this.gameObject);
+            cameraMain.GetComponent<CameraController>().shakeAmount = shakeAmount * 0.7f;
+            cameraMain.GetComponent<CameraController>().shakeDuration = shakeDuration;
+            Destroy (this.gameObject);
 		}
 
 	}
