@@ -43,8 +43,6 @@ public class Bullet : MonoBehaviour {
         {
             if (other.GetComponentInChildren<GuardVisionCone>().chasing == false)
             {
-                other.GetComponent<Guard>().chaseMode = true;
-                other.GetComponent<Guard>().patrolMode = false;
                 other.GetComponent<Guard>().playersLastKnownPosition = shotOrigin;
                 other.GetComponentInChildren<GuardVisionCone>().chasing = true;
                 other.GetComponentInChildren<GuardVisionCone>().chaseePosition = shotOrigin;
@@ -52,9 +50,11 @@ public class Bullet : MonoBehaviour {
             GameObject thisDamageCounter = Instantiate(damageCounter, transform.position + new Vector3 (0, 2, 0), Quaternion.Euler(new Vector3(80, 0, 0)));
             thisDamageCounter.GetComponent<TextMesh>().text = damage.ToString();
             other.GetComponent<Enemy>().Health -= damage;
+            other.GetComponent<Enemy>().bulletPos = transform.position;
+            other.transform.position = other.transform.position + transform.forward;
 
         }
-		if (other.tag != "Player") {
+		if (other.tag != "Player" && other.tag != "UsedAmmo") {
 			Rigidbody body = other.gameObject.GetComponent<Rigidbody> ();
 
 			if (body != null && body.isKinematic == false) {

@@ -1342,7 +1342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b5f11150c519a4bbb88a99ae4e01ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadGuy: {fileID: 1114308116090054, guid: 83646141f5c759044a143c087920f5a6, type: 2}
   Health: 100
+  bulletPos: {x: 0, y: 0, z: 0}
 --- !u!136 &136827416038210002
 CapsuleCollider:
   m_ObjectHideFlags: 1

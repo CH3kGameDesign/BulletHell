@@ -327,6 +327,7 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraHook.cs" />
     <Compile Include="Assets\Scripts\DamageCounter.cs" />
+    <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Guard.cs" />
     <Compile Include="Assets\Scripts\Enemy\GuardVisionCone.cs" />

@@ -23,6 +23,7 @@ public class Guard : MonoBehaviour {
     public bool chaseMode = false;              	//Whether Chasing
 
     public GameObject chaseModeMarker;          	//GameObject Shows Whether Chasing
+    public GameObject target;
 
     public Vector3 playersLastKnownPosition;    	//Where To Go To When Chasing
 
@@ -72,21 +73,9 @@ public class Guard : MonoBehaviour {
         if (chaseMode == true)
         {
             chaseModeMarker.SetActive(true);
-            navAgent.destination = playersLastKnownPosition;
+            navAgent.destination = target.transform.position;
             patrolMode = false;
             Debug.Log("Guard Chasing");
-
-            //If close to Player's Last Position invoke ReturnToPath
-            if (Vector3.Distance(transform.position, playersLastKnownPosition) < 0.5f)
-            {
-                chaseTimer++;
-                if (chaseTimer > 120)
-                {
-                    Invoke("ReturnToPath", 0);
-                }
-            }
-            else
-                chaseTimer = 0;
         }
     }
 

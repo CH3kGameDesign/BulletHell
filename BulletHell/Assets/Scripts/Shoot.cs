@@ -10,12 +10,18 @@ public class Shoot : MonoBehaviour {
 	public int fireTimer;
 	public int fireSpeed;
 
+    public float knockBack;
+    public float bulletSpread;
+
 	public Text ammoCounter;
 	public int ammo;
 	public int ammoLimit;
 
 	public GameObject bullet;
-	public GameObject target;
+    public GameObject ammoUsed;
+    public GameObject muzzleFlash;
+
+    private int timeScaleReset = 0;
 
 	void Update () {
 		ammoCounter.text = "Ammo: " + ammo; 
@@ -29,14 +35,26 @@ public class Shoot : MonoBehaviour {
 				canShoot = false;
 				fireTimer = 0;
 				ammo -= 1;
-				Instantiate (bullet, transform.position, transform.rotation);
+                Instantiate(muzzleFlash, transform.position + transform.forward, transform.rotation);
+				Instantiate (bullet, transform.position, (transform.rotation * Quaternion.Euler (0, Random.Range(-bulletSpread, bulletSpread), 0)));
+                GameObject ammoShell = Instantiate(ammoUsed, transform.position, (transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread*2, bulletSpread*2), 0)));
+                ammoShell.GetComponent<Rigidbody>().AddForce(-new Vector3(transform.forward.x + Random.Range(-bulletSpread/15, bulletSpread/15), transform.forward.y, transform.forward.z + Random.Range(-bulletSpread/15, bulletSpread/15)) * 8, ForceMode.Impulse);
+                GetComponentInParent<Movement>().KnockBack(knockBack, transform.forward);
+                Time.timeScale = 0.7f;
+                timeScaleReset = 0;
 			}
 		}
 
 		if (fireTimer > fireSpeed)
 			canShoot = true;
 
+        if (timeScaleReset > 1)
+        {
+            Time.timeScale = 1;
+        }
+
 		fireTimer++;
+        timeScaleReset++;
 	}
 		
 }

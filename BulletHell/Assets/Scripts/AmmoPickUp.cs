@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AmmoPickUp : MonoBehaviour {
-	
+
+    public int ammoAmount;
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -11,7 +13,7 @@ public class AmmoPickUp : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 		if (other.tag == "Player") {
-			other.GetComponentInChildren<Shoot> ().ammo += 20;
+			other.GetComponentInChildren<Shoot> ().ammo += ammoAmount;
 			Destroy (this.gameObject);
 		}
 	}

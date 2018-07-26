@@ -49,4 +49,9 @@ public class Movement : MonoBehaviour {
 			body.AddForceAtPosition (new Vector3 (moveDirection.x, 0, moveDirection.z) * pushForce, transform.position, ForceMode.Impulse);
 		}
 	}
+
+    public void KnockBack (float knockBack, Vector3 forward)
+    {
+            GetComponent<CharacterController>().Move(- forward * knockBack);
+    }
 }
