@@ -23,13 +23,19 @@ public class Shoot : MonoBehaviour {
 
     private int timeScaleReset = 0;
 
-	void Update () {
+    private AudioSource[] aSources;
+
+    private void Start()
+    {
+        aSources = GetComponents<AudioSource>();
+    }
+    void Update () {
 		ammoCounter.text = "Ammo: " + ammo; 
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (Input.GetMouseButton (0) && canShoot == true) {
+        if (Input.GetMouseButton (0) && canShoot == true) {
 			if (ammo > 0) {
 				Debug.Log ("BOOOM");
 				canShoot = false;
@@ -40,9 +46,15 @@ public class Shoot : MonoBehaviour {
                 GameObject ammoShell = Instantiate(ammoUsed, transform.position, (transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread*2, bulletSpread*2), 0)));
                 ammoShell.GetComponent<Rigidbody>().AddForce(-new Vector3(transform.forward.x + Random.Range(-bulletSpread/15, bulletSpread/15), transform.forward.y, transform.forward.z + Random.Range(-bulletSpread/15, bulletSpread/15)) * 8, ForceMode.Impulse);
                 GetComponentInParent<Movement>().KnockBack(knockBack, transform.forward);
+                
+                aSources[Random.Range(0, aSources.Length - 1)].Play();
                 Time.timeScale = 0.7f;
                 timeScaleReset = 0;
 			}
+            else
+            {
+                aSources[aSources.Length - 1].Play();
+            }
 		}
 
 		if (fireTimer > fireSpeed)

@@ -334,6 +334,7 @@
     <Compile Include="Assets\Scripts\FaceDirection.cs" />
     <Compile Include="Assets\Scripts\InventorySelect.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\MusicController.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />
     <Compile Include="Assets\Scripts\SaveLoad\GameProgress.cs" />
     <Compile Include="Assets\Scripts\SaveLoad\SaveLoad.cs" />
