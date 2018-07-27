@@ -54,6 +54,8 @@ public class Shoot : MonoBehaviour {
             else
             {
                 aSources[aSources.Length - 1].Play();
+                canShoot = false;
+                fireTimer = 0;
             }
 		}
 

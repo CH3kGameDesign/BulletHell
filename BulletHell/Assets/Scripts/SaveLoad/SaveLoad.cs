@@ -29,7 +29,7 @@ public static class SaveLoad
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/Inventory.gd", FileMode.Open);
-			Inventory.inventoryList = (List<int>)bf.Deserialize(file);
+			Inventory.inventoryList = (GameObject[])bf.Deserialize(file);
             file.Close();
         }
 

@@ -13,5 +13,5 @@ using UnityEngine.SceneManagement;
 //Keep Track of Game Progress
 public class Inventory
 {
-    public static List<int> inventoryList = new List<int>();
+    public static GameObject[] inventoryList;
 }

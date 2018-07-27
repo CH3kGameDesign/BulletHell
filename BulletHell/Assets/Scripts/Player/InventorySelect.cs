@@ -15,15 +15,26 @@ public class InventorySelect : MonoBehaviour {
 	void Update () {
 		if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
 			activeSlot++;
-			if (activeSlot == 13)
-				activeSlot = 1;
+			if (activeSlot == 12)
+				activeSlot = 0;
 			Debug.Log ("Active Slot: " + activeSlot);
+            ChangeItem();
 		}
 		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
 			activeSlot--;
-			if (activeSlot == 0)
-				activeSlot = 12;
+			if (activeSlot == -1)
+				activeSlot = 11;
 			Debug.Log ("Active Slot: " + activeSlot);
-		}
+            ChangeItem();
+        }
 	}
+
+    private void ChangeItem ()
+    {
+        for (int i = 0; i <= 1; i++)
+        {
+            Inventory.inventoryList[i].SetActive(false);
+        }
+        Inventory.inventoryList[activeSlot].SetActive(true);
+    }
 }
