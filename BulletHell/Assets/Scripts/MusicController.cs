@@ -12,6 +12,7 @@ public class MusicController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         songList = GetComponents<AudioSource>();
+		currentSong = -1;
         NewSong();
     }
 	

@@ -15,14 +15,14 @@ public class InventorySelect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
+		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
 			activeSlot++;
 			if (activeSlot == 12)
 				activeSlot = 0;
 			Debug.Log ("Active Slot: " + activeSlot);
             ChangeItem();
 		}
-		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+		if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
 			activeSlot--;
 			if (activeSlot == -1)
 				activeSlot = 11;
