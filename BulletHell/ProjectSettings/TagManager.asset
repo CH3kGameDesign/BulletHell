@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - UsedAmmo
+  - PickUp
   layers:
   - Default
   - TransparentFX

@@ -29,7 +29,7 @@ public static class SaveLoad
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/Inventory.gd", FileMode.Open);
-			Inventory.inventoryList = (GameObject[])bf.Deserialize(file);
+			Inventory.inventoryList = (List<GameObject>)bf.Deserialize(file);
             file.Close();
         }
 
@@ -37,10 +37,10 @@ public static class SaveLoad
     //RESET PROGRESS
     public static void ResetProgress()
     {
-        //if (File.Exists(Application.persistentDataPath + "/levelComplete.gd"))
-        //{
+        if (File.Exists(Application.persistentDataPath + "/Inventory.gd"))
+        {
             File.Delete(Application.persistentDataPath + "/Inventory.gd");
-        //}
+        }
 
     }
 }

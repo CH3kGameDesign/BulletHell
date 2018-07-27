@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour {
 		if (Health <= 0)
         {
             GameObject explodeGuy = Instantiate(deadGuy, transform.position, transform.rotation);
+			explodeGuy.transform.SetParent(GameObject.Find("PermancyStuff").transform);
             explodeGuy.GetComponent<Rigidbody>().AddExplosionForce(500, bulletPos, 10);
             Destroy(this.gameObject);
         }
