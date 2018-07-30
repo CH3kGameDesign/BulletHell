@@ -23,11 +23,14 @@ public class Shoot : MonoBehaviour {
 
     private int timeScaleReset = 0;
 
+	private GameObject activeGun;
     private AudioSource[] aSources;
+
+
 
     private void Start()
     {
-        aSources = GetComponents<AudioSource>();
+		
     }
     void Update () {
 		ammoCounter.text = "Ammo: " + ammo; 
@@ -35,41 +38,43 @@ public class Shoot : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (Input.GetMouseButton (0) && canShoot == true) {
-			if (ammo > 0) {
-				Debug.Log ("BOOOM");
-				canShoot = false;
-				fireTimer = 0;
-				ammo -= 1;
-                Instantiate(muzzleFlash, transform.position + transform.forward, transform.rotation);
-				Instantiate (bullet, transform.position, (transform.rotation * Quaternion.Euler (0, Random.Range(-bulletSpread, bulletSpread), 0)));
-                GameObject ammoShell = Instantiate(ammoUsed, transform.position, (transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread*2, bulletSpread*2), 0)));
-				ammoShell.transform.SetParent (GameObject.Find ("PermancyStuff").transform);
-                ammoShell.GetComponent<Rigidbody>().AddForce(-new Vector3(transform.forward.x + Random.Range(-bulletSpread/15, bulletSpread/15), transform.forward.y, transform.forward.z + Random.Range(-bulletSpread/15, bulletSpread/15)) * 8, ForceMode.Impulse);
-                GetComponentInParent<Movement>().KnockBack(knockBack, transform.forward);
+		activeGun = Inventory.inventoryList [GetComponentInParent<InventorySelect> ().activeSlot];
+		if (activeGun.tag == "Gun") {
+			aSources = activeGun.GetComponents<AudioSource>();
+			if (Input.GetMouseButton (0) && canShoot == true) {
+				if (ammo > 0) {
+					Debug.Log ("BOOOM");
+					canShoot = false;
+					fireTimer = 0;
+					ammo -= 1;
+					Instantiate (muzzleFlash, transform.position + transform.forward, transform.rotation);
+					Instantiate (bullet, transform.position, (transform.rotation * Quaternion.Euler (0, Random.Range (-activeGun.GetComponent<GunData>().bulletSpread, activeGun.GetComponent<GunData>().bulletSpread), 0)));
+					GameObject ammoShell = Instantiate (ammoUsed, transform.position, (transform.rotation * Quaternion.Euler (0, Random.Range (-activeGun.GetComponent<GunData>().bulletSpread * 2, activeGun.GetComponent<GunData>().bulletSpread * 2), 0)));
+					ammoShell.transform.SetParent (GameObject.Find ("PermancyStuff").transform);
+					ammoShell.GetComponent<Rigidbody> ().AddForce (-new Vector3 (transform.forward.x + Random.Range (-activeGun.GetComponent<GunData>().bulletSpread / 15, activeGun.GetComponent<GunData>().bulletSpread / 15), transform.forward.y, transform.forward.z + Random.Range (-activeGun.GetComponent<GunData>().bulletSpread / 15, activeGun.GetComponent<GunData>().bulletSpread / 15)) * 8, ForceMode.Impulse);
+					GetComponentInParent<Movement> ().KnockBack (activeGun.GetComponent<GunData>().knockBack, transform.forward);
                 
-                aSources[Random.Range(0, aSources.Length - 1)].Play();
-                Time.timeScale = 0.7f;
-                timeScaleReset = 0;
+					aSources [Random.Range (0, aSources.Length - 1)].Play ();
+					Time.timeScale = 0.7f;
+					timeScaleReset = 0;
+				}
+				if (ammo < 5) {
+					aSources [aSources.Length - 1].Play ();
+					canShoot = false;
+					fireTimer = 0;
+				}
 			}
-            else
-            {
-                aSources[aSources.Length - 1].Play();
-                canShoot = false;
-                fireTimer = 0;
-            }
+
+			if (fireTimer > activeGun.GetComponent<GunData>().fireSpeed)
+				canShoot = true;
+
+			if (timeScaleReset > 1) {
+				Time.timeScale = 1;
+			}
+
+			fireTimer++;
+			timeScaleReset++;
 		}
-
-		if (fireTimer > fireSpeed)
-			canShoot = true;
-
-        if (timeScaleReset > 1)
-        {
-            Time.timeScale = 1;
-        }
-
-		fireTimer++;
-        timeScaleReset++;
 	}
 		
 }

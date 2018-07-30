@@ -29,6 +29,68 @@ public class InventorySelect : MonoBehaviour {
 			Debug.Log ("Active Slot: " + activeSlot);
             ChangeItem();
         }
+
+
+		if (Input.GetKeyDown (KeyCode.Alpha1)) {
+			activeSlot = 0;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha2)) {
+			activeSlot = 1;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha3)) {
+			activeSlot = 2;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha4)) {
+			activeSlot = 3;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha5)) {
+			activeSlot = 4;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha6)) {
+			activeSlot = 5;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha7)) {
+			activeSlot = 6;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha8)) {
+			activeSlot = 7;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha9)) {
+			activeSlot = 8;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha0)) {
+			activeSlot = 9;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Minus)) {
+			activeSlot = 10;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
+		if (Input.GetKeyDown (KeyCode.Equals)) {
+			activeSlot = 11;
+			Debug.Log ("Active Slot: " + activeSlot);
+			ChangeItem();
+		}
 		selectedSlot.transform.localPosition = new Vector3 (-275.6f + 50 * activeSlot, selectedSlot.transform.localPosition.y, selectedSlot.transform.localPosition.z);
 	}
 
@@ -39,7 +101,8 @@ public class InventorySelect : MonoBehaviour {
             Inventory.inventoryList[i].SetActive(false);
         }
         Inventory.inventoryList[activeSlot].SetActive(true);
-		Inventory.inventoryList [activeSlot].transform.SetParent (this.gameObject.transform);
+		Inventory.inventoryList [activeSlot].transform.SetParent (GameObject.Find("PlayerModel").transform);
+		Inventory.inventoryList [activeSlot].transform.localRotation = Quaternion.Euler (Vector3.zero);
 		Inventory.inventoryList [activeSlot].transform.localPosition = new Vector3(0, 2, 0);
     }
 }
