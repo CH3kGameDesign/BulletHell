@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FaceDirection : MonoBehaviour {
 
-	public GameObject target;
+	//public GameObject target;
 	
 	// Update is called once per frame
 	void Update () {
-		transform.LookAt (target.transform);
+		transform.LookAt (GameObject.Find("Target").transform);
 	}
 }

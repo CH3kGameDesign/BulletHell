@@ -103,6 +103,6 @@ public class InventorySelect : MonoBehaviour {
         Inventory.inventoryList[activeSlot].SetActive(true);
 		Inventory.inventoryList [activeSlot].transform.SetParent (GameObject.Find("PlayerModel").transform);
 		Inventory.inventoryList [activeSlot].transform.localRotation = Quaternion.Euler (Vector3.zero);
-		Inventory.inventoryList [activeSlot].transform.localPosition = new Vector3(0, 2, 0);
+		Inventory.inventoryList [activeSlot].transform.localPosition = new Vector3(0, 0, 0.5f);
     }
 }

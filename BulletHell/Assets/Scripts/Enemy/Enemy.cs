@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour {
     public GameObject deadGuy;
     public int Health;
 
+	public List<GameObject> drops;
+
     public Vector3 bulletPos;
     	
 	// Update is called once per frame
@@ -17,6 +19,12 @@ public class Enemy : MonoBehaviour {
 			explodeGuy.transform.SetParent(GameObject.Find("PermancyStuff").transform);
             explodeGuy.GetComponent<Rigidbody>().AddExplosionForce(500, bulletPos, 10);
             Destroy(this.gameObject);
+
+			int randomDrop = Random.Range (0, drops.Capacity);
+			Debug.Log (randomDrop);
+
+			if (drops[randomDrop] != null)
+				Instantiate (drops [randomDrop], transform.position, transform.rotation);
         }
 	}
 }

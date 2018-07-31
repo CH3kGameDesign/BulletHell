@@ -5,17 +5,19 @@
       <File FileName="Assets\Scripts\SaveLoad\SaveLoad.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Enemy\GuardVisionCone.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Enemy\Guard.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\InventorySelect.cs" Line="105" Column="81" />
+      <File FileName="Assets\Scripts\Player\InventorySelect.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SaveLoad\Inventory.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PickUp.cs" Line="23" Column="13" />
+      <File FileName="Assets\Scripts\Player\PickUp.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\Movement.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Gun Stuff\Shoot.cs" Line="50" Column="92" />
-      <File FileName="Assets\Scripts\Enemy\Enemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gun Stuff\Shoot.cs" Line="91" Column="24" />
+      <File FileName="Assets\Scripts\Enemy\Enemy.cs" Line="27" Column="78" />
       <File FileName="Assets\Scripts\MusicController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\FaceDirection.cs" Line="8" Column="2" />
+      <File FileName="Assets\Scripts\Player\FaceDirection.cs" Line="11" Column="56" />
       <File FileName="Assets\Scripts\AnimationController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Gun Stuff\GunData.cs" Line="16" Column="3" />
+      <File FileName="Assets\Scripts\Gun Stuff\GunData.cs" Line="17" Column="3" />
+      <File FileName="Assets\Scripts\Player\CameraHook.cs" Line="14" Column="57" />
+      <File FileName="Assets\Scripts\Gun Stuff\Bullet.cs" Line="70" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -55,14 +55,18 @@ public class Bullet : MonoBehaviour {
 
         }
 		if (other.tag != "Player" && other.tag != "UsedAmmo") {
-			Rigidbody body = other.gameObject.GetComponent<Rigidbody> ();
+			if (other.GetComponent<Rigidbody> () != null) {
+				
+				Rigidbody body = other.gameObject.GetComponent<Rigidbody> ();
 
-			if (body != null && body.isKinematic == false) {
-				body.AddForceAtPosition (transform.forward * pushForce, transform.position, ForceMode.Impulse);
+				if (body != null && body.isKinematic == false) {
+					body.AddForceAtPosition (transform.forward * pushForce, transform.position, ForceMode.Impulse);
+				}
 			}
-            cameraMain.GetComponent<CameraController>().shakeAmount = shakeAmount * 0.7f;
-            cameraMain.GetComponent<CameraController>().shakeDuration = shakeDuration;
-            Destroy (this.gameObject);
+			cameraMain.GetComponent<CameraController> ().shakeAmount = shakeAmount * 0.7f;
+			cameraMain.GetComponent<CameraController> ().shakeDuration = shakeDuration;
+			Destroy (this.gameObject);
+			
 		}
 
 	}
