@@ -7,9 +7,10 @@ public class Aim : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		RaycastHit hit;
+        int layer_mask = LayerMask.GetMask("Cursor Detector");
+        RaycastHit hit;
 
-		if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 100)) {
+		if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 100, layer_mask)) {
 			transform.position = hit.point;
 		}
 
