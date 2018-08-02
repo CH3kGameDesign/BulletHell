@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class InventorySelect : MonoBehaviour {
 
 	public int activeSlot;
-	public GameObject selectedSlot; 
+	public GameObject selectedSlot;
+
+    public Texture2D cursor;
+    public Texture2D reticle;
 
 	// Use this for initialization
 	void Start () {
@@ -104,5 +107,14 @@ public class InventorySelect : MonoBehaviour {
 		Inventory.inventoryList [activeSlot].transform.SetParent (GameObject.Find("PlayerModel").transform);
 		Inventory.inventoryList [activeSlot].transform.localRotation = Quaternion.Euler (Vector3.zero);
 		Inventory.inventoryList [activeSlot].transform.localPosition = new Vector3(0, 0, 0.5f);
+
+        if (Inventory.inventoryList[activeSlot].tag == "Gun")
+        {
+            Cursor.SetCursor(reticle, new Vector2(32, 32), CursorMode.ForceSoftware);
+        }
+        else
+        {
+            Cursor.SetCursor(cursor, new Vector2(7, 2), CursorMode.ForceSoftware);
+        }
     }
 }

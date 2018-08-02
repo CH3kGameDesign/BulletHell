@@ -18,7 +18,7 @@ public class MainMenuManager : MonoBehaviour {
 				Inventory.inventoryList.Add (emptySlot);
 			}
 		}
-		Cursor.SetCursor (cursor, new Vector2 (7, 2), CursorMode.Auto);
+		Cursor.SetCursor (cursor, new Vector2 (7, 2), CursorMode.ForceSoftware);
 		Cursor.lockState = CursorLockMode.Confined;
 	}
 	

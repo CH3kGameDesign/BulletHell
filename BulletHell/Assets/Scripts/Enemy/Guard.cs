@@ -30,6 +30,12 @@ public class Guard : MonoBehaviour {
     private int chaseTimer = 0;
     private int randomPathTimer = 0;
 
+    public float fireRate;
+    private float fireCoolDown;
+    public float bulletSpread;
+
+    public GameObject bullet;
+
     
 
 	//Link The NavMeshAgent Component
@@ -76,6 +82,19 @@ public class Guard : MonoBehaviour {
             navAgent.destination = target.transform.position;
             patrolMode = false;
             Debug.Log("Guard Chasing");
+            transform.LookAt(target.transform);
+            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+            if (Vector3.Distance(transform.position, target.transform.position) < 3)
+            {
+                navAgent.destination = transform.position;
+            }
+
+            fireCoolDown += Time.deltaTime;
+            if (fireCoolDown > fireRate)
+            {
+                Instantiate(bullet, transform.position, transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread, bulletSpread), 0));
+                fireCoolDown = 0;
+            }
         }
     }
 

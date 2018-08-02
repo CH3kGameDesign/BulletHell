@@ -26,6 +26,7 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         //Movement
+        Rigidbody rb = GetComponent<Rigidbody>();
 		CharacterController controller = GetComponent<CharacterController>();
 			
 		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -33,14 +34,15 @@ public class Movement : MonoBehaviour {
 		moveDirection *= 200;
 		moveDirection = Vector3.ClampMagnitude (moveDirection, speed);
 
-		//rb.MovePosition(transform.position + Vector3.ClampMagnitude(moveDirection, speed));
+		rb.MovePosition(transform.position + moveDirection);                //Speed Needs To Be 0.2
 
-		moveDirection.y -= gravity * Time.deltaTime;
-		controller.Move(moveDirection * Time.deltaTime);
+		//moveDirection.y -= gravity * Time.deltaTime;
+		//controller.Move(moveDirection * Time.deltaTime);                  //Speed Needs To Be 9
 	}
 		
 
 	// PUUUUUUUUSH
+    /*
 	void OnTriggerStay (Collider hit)
 	{
 		Rigidbody body = hit.gameObject.GetComponent<Rigidbody> ();
@@ -49,9 +51,10 @@ public class Movement : MonoBehaviour {
 			body.AddForceAtPosition (new Vector3 (moveDirection.x, 0, moveDirection.z) * pushForce, transform.position, ForceMode.Impulse);
 		}
 	}
+    */
 
     public void KnockBack (float knockBack, Vector3 forward)
     {
-            GetComponent<CharacterController>().Move(- forward * knockBack);
+            GetComponent<Rigidbody>().MovePosition(transform.position - (forward * knockBack));
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+    public bool playerBullet;
+
 	public float bulletSpeed = 20;
 	public float pushForce = 1;
 
@@ -39,7 +41,7 @@ public class Bullet : MonoBehaviour {
 
 	public void OnTriggerStay(Collider other)
 	{
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" && playerBullet == true)
         {
             if (other.GetComponentInChildren<GuardVisionCone>().chasing == false)
             {
@@ -53,8 +55,27 @@ public class Bullet : MonoBehaviour {
             other.GetComponent<Enemy>().bulletPos = transform.position;
             other.transform.position = other.transform.position + transform.forward;
 
+            cameraMain.GetComponent<CameraController>().shakeAmount = shakeAmount * 0.7f;
+            cameraMain.GetComponent<CameraController>().shakeDuration = shakeDuration;
+            Destroy(this.gameObject);
+
         }
-		if (other.tag != "Player" && other.tag != "UsedAmmo") {
+        if (other.tag == "Player" && playerBullet == false)
+        {
+            if (other.GetComponent<PlayerHealth>().invulnerable == false)
+            {
+                GameObject thisDamageCounter = Instantiate(damageCounter, transform.position + new Vector3(0, 2, 0), Quaternion.Euler(new Vector3(80, 0, 0)));
+                thisDamageCounter.GetComponent<TextMesh>().text = damage.ToString();
+                thisDamageCounter.GetComponent<TextMesh>().color = Color.red;
+                other.GetComponent<PlayerHealth>().health -= damage;
+                other.GetComponent<Rigidbody>().MovePosition(other.transform.position + transform.forward);
+                
+                cameraMain.GetComponent<CameraController>().shakeAmount = shakeAmount * 0.7f;
+                cameraMain.GetComponent<CameraController>().shakeDuration = shakeDuration;
+                Destroy(this.gameObject);
+            }
+        }
+        if (other.tag != "Player" && other.tag != "UsedAmmo" && other.tag != "Enemy") {
 			if (other.GetComponent<Rigidbody> () != null) {
 				
 				Rigidbody body = other.gameObject.GetComponent<Rigidbody> ();
