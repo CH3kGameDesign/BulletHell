@@ -61,7 +61,6 @@ public class GuardVisionCone : MonoBehaviour {
                     GetComponentInParent<Guard>().chaseMode = true;                                         //Turn Chase Mode On
                     GetComponentInParent<Guard>().target = hit.collider.gameObject;      //Set Player's Last Known Location
                 }
-                Debug.Log("Hitting " + hit.collider.gameObject.name);            //Say what it hits
             }
         }
     }

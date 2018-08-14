@@ -14,6 +14,9 @@ public class Elevator : MonoBehaviour {
     public Vector3 bottom;
     public Vector3 top;
 
+	public GameObject bottomDoor;
+	public GameObject topDoor;
+
     // Use this for initialization
     void Start () {
         activate = true;
@@ -25,6 +28,15 @@ public class Elevator : MonoBehaviour {
         {
             timer = 0;
         }
+
+		if (floor == 0) {
+			bottomDoor.SetActive (false);
+			topDoor.SetActive (true);
+		}
+		if (floor == 1) {
+			bottomDoor.SetActive (true);
+			topDoor.SetActive (false);
+		}
 
         timer += Time.deltaTime;
 	}
@@ -54,6 +66,7 @@ public class Elevator : MonoBehaviour {
                     activate = false;
                 }
             }
+			GameObject.Find ("CameraPivot").GetComponent<CameraPivot> ().rotation = -60;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -61,9 +74,15 @@ public class Elevator : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             inside = false;
-            activate = true;
+			Invoke ("Reactivate", 1);
             Debug.Log("work");
+			GameObject.Find ("CameraPivot").GetComponent<CameraPivot> ().rotation = 0;
         }
     }
 
+
+	private void Reactivate()
+	{
+		activate = true;
+	}
 }

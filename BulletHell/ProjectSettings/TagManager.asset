@@ -8,6 +8,7 @@ TagManager:
   - UsedAmmo
   - PickUp
   - Gun
+  - Invisible
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Player
   - Used Ammo
   - Cursor Detector
-  - 
-  - 
+  - Bullet
+  - Laser
   - 
   - 
   - 
