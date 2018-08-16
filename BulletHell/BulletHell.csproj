@@ -318,6 +318,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="BulletHell.Plugins.csproj">
+      <Project>{3B90FCFB-0708-CCEF-236D-4BA71378F68B}</Project>
+      <Name>BulletHell.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -381,11 +387,13 @@
     <Compile Include="Assets\Scripts\Interactables\AmmoPickUp.cs" />
     <Compile Include="Assets\Scripts\Interactables\DestroyAfterTime.cs" />
     <Compile Include="Assets\Scripts\Interactables\Rotate.cs" />
+    <Compile Include="Assets\Scripts\LaserSight.cs" />
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\MusicController.cs" />
     <Compile Include="Assets\Scripts\Player\Aim.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\CameraHook.cs" />
+    <Compile Include="Assets\Scripts\Player\CameraPivot.cs" />
     <Compile Include="Assets\Scripts\Player\FaceDirection.cs" />
     <Compile Include="Assets\Scripts\Player\GetTackled.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySelect.cs" />
@@ -658,6 +666,11 @@
     <None Include="Assets\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
     <None Include="Assets\ShaderForge\Readme.txt" />
     <None Include="Assets\Shaders\Outline.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
