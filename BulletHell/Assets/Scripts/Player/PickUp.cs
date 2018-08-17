@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PickUp : MonoBehaviour
 {
@@ -13,8 +14,8 @@ public class PickUp : MonoBehaviour
 		if (other.gameObject.tag == "PickUp" || other.gameObject.tag == "Gun") {
 			pickedUp = false;
 			for (int i = 0; i < 12; i++) {
-				if (Inventory.inventoryList [i].name == "Empty Slot") {
-					Inventory.inventoryList [i] = other.gameObject;
+				if (Inventory.inventoryList [i] == AssetDatabase.GetAssetPath(GameObject.Find("Empty Slot"))) {
+					Inventory.inventoryList [i] = AssetDatabase.GetAssetPath(other.gameObject);
 					other.gameObject.GetComponent<Collider> ().enabled = false;
 					other.gameObject.SetActive(false);
 					if (GetComponent<InventorySelect> ().activeSlot == i) {

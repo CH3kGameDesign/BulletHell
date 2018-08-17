@@ -38,7 +38,8 @@ public class Shoot : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		activeGun = Inventory.inventoryList [GetComponentInParent<InventorySelect> ().activeSlot];
+        
+		activeGun = GameObject.Find("PlayerHands").transform.GetChild(0).gameObject;
 		if (activeGun.tag == "Gun") {
 			activeGun.GetComponent<FaceDirection> ().enabled = true;
 			activeGun.transform.localPosition = Vector3.Lerp (activeGun.transform.localPosition,new Vector3(activeGun.transform.localPosition.x, activeGun.transform.localPosition.y, 0), 0.1f);

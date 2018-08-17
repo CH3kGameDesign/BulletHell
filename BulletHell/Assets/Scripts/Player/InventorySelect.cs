@@ -99,16 +99,17 @@ public class InventorySelect : MonoBehaviour {
 
     public void ChangeItem ()
     {
-        for (int i = 0; i <= 1; i++)
-        {
-            Inventory.inventoryList[i].SetActive(false);
-        }
-        Inventory.inventoryList[activeSlot].SetActive(true);
-		Inventory.inventoryList [activeSlot].transform.SetParent (GameObject.Find("PlayerModel").transform);
-		Inventory.inventoryList [activeSlot].transform.localRotation = Quaternion.Euler (Vector3.zero);
-		Inventory.inventoryList [activeSlot].transform.localPosition = new Vector3(0, 0, 0.5f);
 
-        if (Inventory.inventoryList[activeSlot].tag == "Gun")
+        Destroy(GameObject.Find("PlayerHands").transform.GetChild(0).gameObject);
+
+        UnityEngine.Object pPrefab = Resources.Load(Inventory.inventoryList[activeSlot]);
+
+        GameObject currentObject = (GameObject)GameObject.Instantiate(pPrefab, Vector3.zero, Quaternion.identity);
+        currentObject.transform.SetParent (GameObject.Find("PlayerHands").transform);
+        currentObject.transform.localRotation = Quaternion.Euler (Vector3.zero);
+        currentObject.transform.localPosition = new Vector3(0, 0, 0.5f);
+
+        if (currentObject.tag == "Gun")
         {
             Cursor.SetCursor(reticle, new Vector2(32, 32), CursorMode.ForceSoftware);
         }
