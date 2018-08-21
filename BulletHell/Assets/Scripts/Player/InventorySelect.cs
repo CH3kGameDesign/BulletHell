@@ -14,6 +14,7 @@ public class InventorySelect : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		activeSlot = 0;
+		Invoke ("ChangeItem", 0.1f);
 	}
 	
 	// Update is called once per frame
@@ -99,15 +100,30 @@ public class InventorySelect : MonoBehaviour {
 
     public void ChangeItem ()
     {
-
+		if (GameObject.Find("PlayerHands").transform.childCount != 0)
         Destroy(GameObject.Find("PlayerHands").transform.GetChild(0).gameObject);
 
-        UnityEngine.Object pPrefab = Resources.Load(Inventory.inventoryList[activeSlot]);
+		//SPLIT THE TEXT NOT FINISHED YET
+		string objectPath = Inventory.inventoryList [activeSlot];
+		//Debug.Log (objectPath);
+		string[] objectPathParts = objectPath.Split(new string[] {"."}, System.StringSplitOptions.None);
+
+		objectPathParts = objectPathParts[0].Split(new string[] {"/"}, System.StringSplitOptions.None);
+
+		objectPath = objectPathParts[2] + "/" + objectPathParts[3] + "/" + objectPathParts[4];
+		//Debug.Log (objectPath);
+		//
+
+        UnityEngine.Object pPrefab = Resources.Load(objectPath);
 
         GameObject currentObject = (GameObject)GameObject.Instantiate(pPrefab, Vector3.zero, Quaternion.identity);
         currentObject.transform.SetParent (GameObject.Find("PlayerHands").transform);
         currentObject.transform.localRotation = Quaternion.Euler (Vector3.zero);
         currentObject.transform.localPosition = new Vector3(0, 0, 0.5f);
+
+		if (currentObject.GetComponent<BoxCollider> ()) {
+			currentObject.GetComponent<BoxCollider> ().enabled = false;
+		}
 
         if (currentObject.tag == "Gun")
         {

@@ -129,6 +129,9 @@
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\Inventory.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\SaveLoad.cs" />
+     <Compile Include="Assets\Scripts\Train\GoToDestination.cs" />
+     <Compile Include="Assets\Scripts\Train\InsideTrain.cs" />
+     <Compile Include="Assets\Scripts\TriggerDisplay.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
@@ -312,6 +315,10 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/Valued Customer/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{9D672825-E195-9853-6F45-65A5DD25F255}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

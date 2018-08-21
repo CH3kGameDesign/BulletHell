@@ -13,7 +13,8 @@ public class MainMenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log(AssetDatabase.GetAssetPath(emptySlot));
+		Object emptySlotobj = PrefabUtility.GetPrefabParent (emptySlot);
+        Debug.Log(AssetDatabase.GetAssetPath(emptySlotobj));
         if (File.Exists(Application.persistentDataPath + "/inventory.dat"))
         {
             SaveLoad.Load();
@@ -22,7 +23,7 @@ public class MainMenuManager : MonoBehaviour {
         {
             for (int i = 0; i < 12; i++)
             {
-                Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlot));
+                Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));
             }
         }
 		Cursor.SetCursor (cursor, new Vector2 (7, 2), CursorMode.ForceSoftware);
@@ -39,6 +40,17 @@ public class MainMenuManager : MonoBehaviour {
         SaveLoad.Save();
         SceneManager.LoadScene(1);
     }
+
+	public void ResetProgress ()
+	{
+		SaveLoad.ResetProgress ();
+		Object emptySlotobj = PrefabUtility.GetPrefabParent (emptySlot);
+		Inventory.inventoryList = new List<string>();
+		for (int i = 0; i < 12; i++)
+		{
+			Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));
+		}
+	}
 
     public void QuitGame ()
     {

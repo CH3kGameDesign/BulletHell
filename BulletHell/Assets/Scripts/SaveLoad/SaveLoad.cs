@@ -52,8 +52,10 @@ public static class SaveLoad
     //RESET PROGRESS
     public static void ResetProgress()
     {
+		Debug.Log ("start deleting");
         if (File.Exists(Application.persistentDataPath + "/inventory.dat"))
         {
+			Debug.Log ("deleting");
             File.Delete(Application.persistentDataPath + "/inventory.dat");
         }
 

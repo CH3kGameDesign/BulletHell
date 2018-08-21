@@ -22,6 +22,8 @@ public class InsideTrain : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             trainMap.SetActive(true);
+			Cursor.SetCursor(other.gameObject.GetComponent<InventorySelect> ().cursor, new Vector2(7, 2), CursorMode.ForceSoftware);
+			other.gameObject.GetComponentInChildren<Shoot> ().canShoot = false;
         }
     }
 
@@ -30,6 +32,7 @@ public class InsideTrain : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             trainMap.SetActive(false);
+			other.gameObject.GetComponent<InventorySelect> ().ChangeItem ();
         }
     }
 }
