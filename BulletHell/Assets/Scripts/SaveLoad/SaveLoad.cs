@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -27,6 +28,26 @@ public static class SaveLoad
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(fs, Inventory.inventoryList);
         fs.Close();
+
+        fs = new FileStream(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyx.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Permancy.permancyVectorX);
+        fs.Close();
+
+        fs = new FileStream(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyy.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Permancy.permancyVectorY);
+        fs.Close();
+
+        fs = new FileStream(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyz.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Permancy.permancyVectorZ);
+        fs.Close();
+
+        fs = new FileStream(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyroty.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Permancy.permancyRotationY);
+        fs.Close();
     }
     //LOAD
     public static void Load()
@@ -47,16 +68,65 @@ public static class SaveLoad
 
             Inventory.inventoryList = (List<string>)bformatter.Deserialize(stream);
         }
+        
+    }
 
+    public static void LoadPermancy()
+    {
+        using (Stream stream = File.Open(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyx.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Permancy.permancyVectorX = (List<float>)bformatter.Deserialize(stream);
+        }
+
+        using (Stream stream = File.Open(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyy.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Permancy.permancyVectorY = (List<float>)bformatter.Deserialize(stream);
+        }
+
+        using (Stream stream = File.Open(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyz.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Permancy.permancyVectorZ = (List<float>)bformatter.Deserialize(stream);
+        }
+
+        using (Stream stream = File.Open(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyroty.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Permancy.permancyRotationY = (List<float>)bformatter.Deserialize(stream);
+        }
     }
     //RESET PROGRESS
     public static void ResetProgress()
     {
-		Debug.Log ("start deleting");
+        Debug.Log("start deleting");
         if (File.Exists(Application.persistentDataPath + "/inventory.dat"))
         {
-			Debug.Log ("deleting");
+            Debug.Log("deleting Inventory");
             File.Delete(Application.persistentDataPath + "/inventory.dat");
+        }
+        ResetPermancy();
+    }
+    public static void ResetPermancy()
+    {
+        if (File.Exists(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyx.dat"))
+        {
+            Debug.Log("deleting Vector3");
+            File.Delete(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyx.dat");
+            File.Delete(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyy.dat");
+            File.Delete(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyz.dat");
+            File.Delete(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyroty.dat");
+
+            Permancy.permancyVectorX = new List<float>();
+            Permancy.permancyVectorY = new List<float>();
+            Permancy.permancyVectorZ = new List<float>();
+             
+            Permancy.permancyRotationY = new List<float>();
         }
 
     }

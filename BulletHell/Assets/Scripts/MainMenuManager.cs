@@ -26,7 +26,13 @@ public class MainMenuManager : MonoBehaviour {
                 Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));
             }
         }
-		Cursor.SetCursor (cursor, new Vector2 (7, 2), CursorMode.ForceSoftware);
+
+        if (File.Exists(Application.persistentDataPath + "/permancyx.dat"))
+        {
+            SaveLoad.LoadPermancy();
+        }
+
+        Cursor.SetCursor (cursor, new Vector2 (7, 2), CursorMode.ForceSoftware);
 		Cursor.lockState = CursorLockMode.Confined;
 	}
 	

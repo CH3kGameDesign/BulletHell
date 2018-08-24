@@ -376,6 +376,7 @@
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
     <Compile Include="Assets\Scripts\AnimationController.cs" />
+    <Compile Include="Assets\Scripts\Couch.cs" />
     <Compile Include="Assets\Scripts\Elevator.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Guard.cs" />
@@ -390,6 +391,7 @@
     <Compile Include="Assets\Scripts\LaserSight.cs" />
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\MusicController.cs" />
+    <Compile Include="Assets\Scripts\PermancyRecord.cs" />
     <Compile Include="Assets\Scripts\Player\Aim.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\CameraHook.cs" />
@@ -401,8 +403,8 @@
     <Compile Include="Assets\Scripts\Player\PickUp.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\SaveLoad\Inventory.cs" />
+    <Compile Include="Assets\Scripts\SaveLoad\Permancy.cs" />
     <Compile Include="Assets\Scripts\SaveLoad\SaveLoad.cs" />
-    <Compile Include="Assets\Scripts\TempSaveLoad.cs" />
     <Compile Include="Assets\Scripts\Train\GoToDestination.cs" />
     <Compile Include="Assets\Scripts\Train\InsideTrain.cs" />
     <Compile Include="Assets\Scripts\TriggerDisplay.cs" />
