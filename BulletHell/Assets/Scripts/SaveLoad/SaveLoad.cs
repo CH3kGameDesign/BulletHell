@@ -24,11 +24,22 @@ public static class SaveLoad
         Debug.Log("Saved To " + Application.persistentDataPath + "/Inventory.gd");
         file.Close();
         */
+
+		//Inventory
         FileStream fs = new FileStream(Application.persistentDataPath + "/inventory.dat", FileMode.Create);
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(fs, Inventory.inventoryList);
         fs.Close();
 
+		//Time
+		fs = new FileStream(Application.persistentDataPath + "/time.dat", FileMode.Create);
+		bf = new BinaryFormatter();
+		bf.Serialize(fs, Inventory.time);
+		fs.Close();
+
+
+		//Permancy
+		//////////////////////////////////////////////////////////////////
         fs = new FileStream(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "permancyx.dat", FileMode.Create);
         bf = new BinaryFormatter();
         bf.Serialize(fs, Permancy.permancyVectorX);
@@ -48,6 +59,7 @@ public static class SaveLoad
         bf = new BinaryFormatter();
         bf.Serialize(fs, Permancy.permancyRotationY);
         fs.Close();
+		///////////////////////////////////////////////////////////////////
     }
     //LOAD
     public static void Load()
@@ -69,6 +81,12 @@ public static class SaveLoad
             Inventory.inventoryList = (List<string>)bformatter.Deserialize(stream);
         }
         
+		using (Stream stream = File.Open(Application.persistentDataPath + "/time.dat", FileMode.Open))
+		{
+			var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+			Inventory.time = (List<float>)bformatter.Deserialize(stream);
+		}
     }
 
     public static void LoadPermancy()
@@ -128,6 +146,14 @@ public static class SaveLoad
              
             Permancy.permancyRotationY = new List<float>();
         }
+		if (File.Exists (Application.persistentDataPath + "/time.dat")) {
+			File.Delete(Application.persistentDataPath + "/time.dat");
 
+			if (Inventory.time.Count > 1) {
+				Inventory.time [0] = 8;
+				Inventory.time [1] = 0;
+				Inventory.time [2] = 0;
+			}
+		}
     }
 }

@@ -19,7 +19,7 @@ public class LaserSight : MonoBehaviour {
 	void Update () {
 		RaycastHit hit;
 
-		if (Physics.Raycast (transform.position, transform.forward, out hit, layerMask.value)) {
+		if (Physics.Raycast (transform.position, transform.forward, out hit, 100, layerMask)) {
 			//if (hit.collider.gameObject.tag != "Gun" && hit.collider.gameObject.tag != "Invisible" && hit.collider.gameObject.tag != "Player" && hit.collider.gameObject.tag != "UsedAmmo" && hit.collider.gameObject.layer != 12) {
 				if (hit.collider) {
 					lr.SetPosition (1, new Vector3 (0, 0, hit.distance));

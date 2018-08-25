@@ -100,8 +100,11 @@ public class InventorySelect : MonoBehaviour {
 
     public void ChangeItem ()
     {
-		if (GameObject.Find("PlayerHands").transform.childCount != 0)
-        Destroy(GameObject.Find("PlayerHands").transform.GetChild(0).gameObject);
+		if (GameObject.Find ("PlayerHands").transform.childCount != 0) {
+			for (int i = 0; i < GameObject.Find ("PlayerHands").transform.childCount; i++) {
+				Destroy (GameObject.Find ("PlayerHands").transform.GetChild (i).gameObject);
+			}
+		}
 
 		//SPLIT THE TEXT NOT FINISHED YET
 		string objectPath = Inventory.inventoryList [activeSlot];

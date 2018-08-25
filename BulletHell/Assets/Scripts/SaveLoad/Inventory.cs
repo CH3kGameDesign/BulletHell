@@ -14,4 +14,6 @@ using UnityEngine.SceneManagement;
 public class Inventory
 {
 	public static List<string> inventoryList = new List<string>();
+
+	public static List<float> time = new List<float> ();
 }
