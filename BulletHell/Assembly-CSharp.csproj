@@ -130,6 +130,7 @@
      <Compile Include="Assets\Scripts\Player\PickUp.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\Inventory.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad\LoadItem.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\Permancy.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\SaveLoad.cs" />
      <Compile Include="Assets\Scripts\TimeController.cs" />

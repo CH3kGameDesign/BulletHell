@@ -8,23 +8,23 @@ public class PermancyRecord : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Invoke("loadPermancy", 0.01f);
+		Invoke ("loadPermancy", 0.0001f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
-            savePermancy();
+        
 	}
 
     public void savePermancy ()
     {
         int permancyCount = GameObject.Find("PermancyStuff").transform.childCount;
-        Debug.Log(permancyCount);
+        Debug.Log("Saving " + permancyCount);
 
         Permancy.permancyVectorX = new List<float>();
         Permancy.permancyVectorY = new List<float>();
         Permancy.permancyVectorZ = new List<float>();
+		Permancy.permancyRotationY = new List<float>();
 
         for (int i = 0; i < permancyCount; i++)
         {
@@ -38,7 +38,9 @@ public class PermancyRecord : MonoBehaviour {
 
     private void loadPermancy ()
     {
-        for (int i = 0; i < Permancy.permancyVectorX.Count; i++)
+		int permancyCount = Permancy.permancyVectorX.Count;
+		Debug.Log ("Loading " + permancyCount);
+		for (int i = 0; i < permancyCount; i++)
         {
             Instantiate(bulletShell, new Vector3(Permancy.permancyVectorX[i], Permancy.permancyVectorY[i], Permancy.permancyVectorZ[i]), Quaternion.Euler(0, Permancy.permancyRotationY[i], 0), GameObject.Find("PermancyStuff").transform);
         }

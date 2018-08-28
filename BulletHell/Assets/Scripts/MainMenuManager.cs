@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
-using UnityEditor;
+//using UnityEditor;																		*
 
 public class MainMenuManager : MonoBehaviour {
 
@@ -13,8 +13,8 @@ public class MainMenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Object emptySlotobj = PrefabUtility.GetPrefabParent (emptySlot);
-        Debug.Log(AssetDatabase.GetAssetPath(emptySlotobj));
+		//Object emptySlotobj = PrefabUtility.GetPrefabParent (emptySlot);					*
+        //Debug.Log(AssetDatabase.GetAssetPath(emptySlotobj));								*
         if (File.Exists(Application.persistentDataPath + "/inventory.dat"))
         {
             SaveLoad.Load();
@@ -23,7 +23,8 @@ public class MainMenuManager : MonoBehaviour {
         {
             for (int i = 0; i < 12; i++)
             {
-                Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));
+                //Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));	*
+				Inventory.inventoryList.Add("empty");										//
             }
         }
 
@@ -50,11 +51,12 @@ public class MainMenuManager : MonoBehaviour {
 	public void ResetProgress ()
 	{
 		SaveLoad.ResetProgress ();
-		Object emptySlotobj = PrefabUtility.GetPrefabParent (emptySlot);
+		//Object emptySlotobj = PrefabUtility.GetPrefabParent (emptySlot);					*
 		Inventory.inventoryList = new List<string>();
 		for (int i = 0; i < 12; i++)
 		{
-			Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));
+			//Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));		*
+			Inventory.inventoryList.Add("empty");											//
 		}
 	}
 

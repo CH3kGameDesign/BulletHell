@@ -17,6 +17,7 @@ public class GoToDestination : MonoBehaviour {
 
     public void GoToPlace (int destination)
     {
+		GameObject.Find ("GameController").gameObject.GetComponent<PermancyRecord> ().savePermancy ();
         SaveLoad.Save();
         SceneManager.LoadScene(destination);
     }

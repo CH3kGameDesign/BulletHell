@@ -29,6 +29,10 @@ public class Couch : MonoBehaviour {
 					Cursor.SetCursor (intCursor, new Vector2 (7, 2), CursorMode.ForceSoftware);
 					if (Input.GetKeyDown (KeyCode.Mouse1)) {
 						Debug.Log ("Sleep");
+						for (int i = 0; i < GameObject.Find("PermancyStuff").transform.childCount; i++) {
+							GameObject.Destroy(GameObject.Find ("PermancyStuff").transform.GetChild (i).gameObject);
+						}
+
 						SaveLoad.ResetPermancy ();
 					}
 				} else {

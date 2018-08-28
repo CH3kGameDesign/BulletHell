@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InventorySelect : MonoBehaviour {
 
-	public int activeSlot;
 	public GameObject selectedSlot;
 
     public Texture2D cursor;
@@ -13,89 +12,88 @@ public class InventorySelect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		activeSlot = 0;
-		Invoke ("ChangeItem", 0.1f);
+		Invoke ("ChangeItem", 0.0001f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
-			activeSlot++;
-			if (activeSlot == 12)
-				activeSlot = 0;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected++;
+			if (Inventory.inventorySelected == 12)
+				Inventory.inventorySelected = 0;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
             ChangeItem();
 		}
 		if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
-			activeSlot--;
-			if (activeSlot == -1)
-				activeSlot = 11;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected--;
+			if (Inventory.inventorySelected == -1)
+				Inventory.inventorySelected = 11;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
             ChangeItem();
         }
 
 
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
-			activeSlot = 0;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 0;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha2)) {
-			activeSlot = 1;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 1;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha3)) {
-			activeSlot = 2;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 2;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha4)) {
-			activeSlot = 3;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 3;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha5)) {
-			activeSlot = 4;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 4;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha6)) {
-			activeSlot = 5;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 5;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha7)) {
-			activeSlot = 6;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 6;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha8)) {
-			activeSlot = 7;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 7;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha9)) {
-			activeSlot = 8;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 8;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha0)) {
-			activeSlot = 9;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 9;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Minus)) {
-			activeSlot = 10;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 10;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
 		if (Input.GetKeyDown (KeyCode.Equals)) {
-			activeSlot = 11;
-			Debug.Log ("Active Slot: " + activeSlot);
+			Inventory.inventorySelected = 11;
+			Debug.Log ("Active Slot: " + Inventory.inventorySelected);
 			ChangeItem();
 		}
-		selectedSlot.transform.localPosition = new Vector3 (-275.6f + 50 * activeSlot, selectedSlot.transform.localPosition.y, selectedSlot.transform.localPosition.z);
+		selectedSlot.transform.localPosition = new Vector3 (-275.6f + 50 * Inventory.inventorySelected, selectedSlot.transform.localPosition.y, selectedSlot.transform.localPosition.z);
 	}
 
     public void ChangeItem ()
@@ -106,18 +104,22 @@ public class InventorySelect : MonoBehaviour {
 			}
 		}
 
-		//SPLIT THE TEXT NOT FINISHED YET
-		string objectPath = Inventory.inventoryList [activeSlot];
-		//Debug.Log (objectPath);
-		string[] objectPathParts = objectPath.Split(new string[] {"."}, System.StringSplitOptions.None);
 
-		objectPathParts = objectPathParts[0].Split(new string[] {"/"}, System.StringSplitOptions.None);
+		//string objectPath = Inventory.inventoryList [Inventory.inventorySelected];													*
+		string itemID = Inventory.inventoryList [Inventory.inventorySelected];														//
+		Debug.Log (itemID);																							//
+		//string[] objectPathParts = objectPath.Split(new string[] {"."}, System.StringSplitOptions.None);			*
 
-		objectPath = objectPathParts[2] + "/" + objectPathParts[3] + "/" + objectPathParts[4];
-		//Debug.Log (objectPath);
-		//
+		//objectPathParts = objectPathParts[0].Split(new string[] {"/"}, System.StringSplitOptions.None);			*
 
-        UnityEngine.Object pPrefab = Resources.Load(objectPath);
+		//objectPath = objectPathParts[2] + "/" + objectPathParts[3] + "/" + objectPathParts[4];					*
+		//Debug.Log (objectPath);																					*
+
+
+        //UnityEngine.Object pPrefab = Resources.Load(objectPath);													*
+
+		LoadItem.Load(itemID);																						//
+		UnityEngine.Object pPrefab = Resources.Load(LoadItem.NewItemPath);											//
 
         GameObject currentObject = (GameObject)GameObject.Instantiate(pPrefab, Vector3.zero, Quaternion.identity);
         currentObject.transform.SetParent (GameObject.Find("PlayerHands").transform);
