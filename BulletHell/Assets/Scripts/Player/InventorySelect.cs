@@ -94,6 +94,8 @@ public class InventorySelect : MonoBehaviour {
 			ChangeItem();
 		}
 		selectedSlot.transform.localPosition = new Vector3 (-275.6f + 50 * Inventory.inventorySelected, selectedSlot.transform.localPosition.y, selectedSlot.transform.localPosition.z);
+
+        UpdateIcons();
 	}
 
     public void ChangeItem ()
@@ -137,6 +139,22 @@ public class InventorySelect : MonoBehaviour {
         else
         {
             Cursor.SetCursor(cursor, new Vector2(7, 2), CursorMode.ForceSoftware);
+        }
+    }
+
+    private void UpdateIcons()
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            GameObject.Find("InventoryBarItem (" + i + ")").GetComponent<Image>().sprite = Resources.Load<Sprite>("Prefabs/Icons/" + Inventory.inventoryList[i]);
+
+            if (Inventory.inventoryListAmount[i] != 0)
+            {
+                GameObject.Find("InventoryBarText (" + i + ")").GetComponent<Text>().text = Inventory.inventoryListAmount[i].ToString();
+            } else
+            {
+                GameObject.Find("InventoryBarText (" + i + ")").GetComponent<Text>().text = "";
+            }
         }
     }
 }

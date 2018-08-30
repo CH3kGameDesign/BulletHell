@@ -8,7 +8,7 @@ public class PermancyRecord : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Invoke ("loadPermancy", 0.0001f);
+		Invoke ("loadPermancy", 0.01f);
 	}
 	
 	// Update is called once per frame

@@ -14,7 +14,7 @@ public class Elevator : MonoBehaviour {
     public Vector3 bottom;
     public Vector3 top;
 
-	public GameObject bottomDoor;
+    public GameObject bottomDoor;
 	public GameObject topDoor;
 
     // Use this for initialization
@@ -54,7 +54,7 @@ public class Elevator : MonoBehaviour {
                     other.transform.parent = transform;
                     if (floor == 0)
                     {
-                         transform.position = top;
+                        transform.position = top;
                         floor = 1;
                     }
                     else
@@ -75,7 +75,6 @@ public class Elevator : MonoBehaviour {
         {
             inside = false;
 			Invoke ("Reactivate", 1);
-            Debug.Log("work");
 			GameObject.Find ("CameraPivot").GetComponent<CameraPivot> ().rotation = 0;
         }
     }

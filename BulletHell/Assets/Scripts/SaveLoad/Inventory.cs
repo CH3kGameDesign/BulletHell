@@ -14,7 +14,10 @@ using UnityEngine.SceneManagement;
 public class Inventory
 {
 	public static List<string> inventoryList = new List<string>();
-	public static int inventorySelected = 0;
+    public static List<int> inventoryListAmount = new List<int>();
+    public static int inventorySelected = 0;
 
-	public static List<float> time = new List<float> ();
+    public static int health = 10;
+    public static float ammo = 60;
+    public static List<float> time = new List<float> ();
 }

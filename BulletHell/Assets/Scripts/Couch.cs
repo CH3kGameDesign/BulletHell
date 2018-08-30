@@ -32,8 +32,9 @@ public class Couch : MonoBehaviour {
 						for (int i = 0; i < GameObject.Find("PermancyStuff").transform.childCount; i++) {
 							GameObject.Destroy(GameObject.Find ("PermancyStuff").transform.GetChild (i).gameObject);
 						}
+                        other.GetComponent<PlayerHealth>().health = other.GetComponent<PlayerHealth>().healthLimit;
 
-						SaveLoad.ResetPermancy ();
+                        SaveLoad.ResetPermancy ();
 					}
 				} else {
 					other.gameObject.GetComponent<InventorySelect> ().ChangeItem ();

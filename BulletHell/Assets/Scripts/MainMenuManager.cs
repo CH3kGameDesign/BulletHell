@@ -26,6 +26,11 @@ public class MainMenuManager : MonoBehaviour {
                 //Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));	*
 				Inventory.inventoryList.Add("empty");										//
             }
+            for (int i = 0; i < 12; i++)
+            {
+                //Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));	*
+                Inventory.inventoryListAmount.Add(0);										//
+            }
         }
 
         if (File.Exists(Application.persistentDataPath + "/permancyx.dat"))
@@ -39,8 +44,12 @@ public class MainMenuManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+
+    }
 
     public void StartGame ()
     {
@@ -58,7 +67,13 @@ public class MainMenuManager : MonoBehaviour {
 			//Inventory.inventoryList.Add(AssetDatabase.GetAssetPath(emptySlotobj));		*
 			Inventory.inventoryList.Add("empty");											//
 		}
-	}
+
+        Inventory.inventoryListAmount = new List<int>();
+        for (int i = 0; i < 12; i++)
+        {
+            Inventory.inventoryListAmount.Add(0);                                           
+        }
+    }
 
     public void QuitGame ()
     {

@@ -14,8 +14,10 @@ public class Shoot : MonoBehaviour {
     public float bulletSpread;
 
 	public Text ammoCounter;
-	public int ammo;
-	public int ammoLimit;
+    public Image ammoBar;
+    public float ammo;
+    public float pastAmmo;
+	public float ammoLimit;
 
 	public GameObject bullet;
     public GameObject ammoUsed;
@@ -30,10 +32,12 @@ public class Shoot : MonoBehaviour {
 
     private void Start()
     {
-		
+        pastAmmo = ammo;
+        Invoke("UpdateAmmo", 0.00001f);
     }
     void Update () {
-		ammoCounter.text = "Ammo: " + ammo; 
+		ammoCounter.text = "Ammo: " + ammo;
+        ammoBar.fillAmount = ammo / ammoLimit;
 	}
 
 	// Update is called once per frame
@@ -94,6 +98,16 @@ public class Shoot : MonoBehaviour {
 
 		if (ammo > ammoLimit)
 			ammo = ammoLimit;
+
+        if (ammo != pastAmmo)
+            Inventory.ammo = ammo;
+
+        pastAmmo = ammo;
 	}
+
+    private void UpdateAmmo ()
+    {
+        ammo = Inventory.ammo;
+    }
 		
 }

@@ -31,7 +31,12 @@ public static class SaveLoad
         bf.Serialize(fs, Inventory.inventoryList);
         fs.Close();
 
-		fs = new FileStream(Application.persistentDataPath + "/invSelected.dat", FileMode.Create);
+        fs = new FileStream(Application.persistentDataPath + "/invAmount.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Inventory.inventoryListAmount);
+        fs.Close();
+
+        fs = new FileStream(Application.persistentDataPath + "/invSelected.dat", FileMode.Create);
 		bf = new BinaryFormatter();
 		bf.Serialize(fs, Inventory.inventorySelected);
 		fs.Close();
@@ -43,10 +48,22 @@ public static class SaveLoad
 		bf.Serialize(fs, Inventory.time);
 		fs.Close();
 
+        //Health
+        fs = new FileStream(Application.persistentDataPath + "/health.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Inventory.health);
+        fs.Close();
 
-		//Permancy
-		//////////////////////////////////////////////////////////////////
-		fs = new FileStream(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().buildIndex + "permancyx.dat", FileMode.Create);
+        //Ammo
+        fs = new FileStream(Application.persistentDataPath + "/ammo.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Inventory.ammo);
+        fs.Close();
+
+
+        //Permancy
+        //////////////////////////////////////////////////////////////////
+        fs = new FileStream(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().buildIndex + "permancyx.dat", FileMode.Create);
         bf = new BinaryFormatter();
         bf.Serialize(fs, Permancy.permancyVectorX);
         fs.Close();
@@ -87,7 +104,14 @@ public static class SaveLoad
             Inventory.inventoryList = (List<string>)bformatter.Deserialize(stream);
         }
 
-		using (Stream stream = File.Open(Application.persistentDataPath + "/invSelected.dat", FileMode.Open))
+        using (Stream stream = File.Open(Application.persistentDataPath + "/invAmount.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Inventory.inventoryListAmount = (List<int>)bformatter.Deserialize(stream);
+        }
+
+        using (Stream stream = File.Open(Application.persistentDataPath + "/invSelected.dat", FileMode.Open))
 		{
 			var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
@@ -100,7 +124,21 @@ public static class SaveLoad
 
 			Inventory.time = (List<float>)bformatter.Deserialize(stream);
 		}
-		LoadPermancy ();
+
+        using (Stream stream = File.Open(Application.persistentDataPath + "/health.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Inventory.health = (int)bformatter.Deserialize(stream);
+        }
+
+        using (Stream stream = File.Open(Application.persistentDataPath + "/ammo.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Inventory.ammo = (float)bformatter.Deserialize(stream);
+        }
+        LoadPermancy ();
     }
 
     public static void LoadPermancy()
@@ -140,10 +178,25 @@ public static class SaveLoad
         {
             File.Delete(Application.persistentDataPath + "/inventory.dat");
         }
-		if (File.Exists(Application.persistentDataPath + "/invSelected.dat"))
+        if (File.Exists(Application.persistentDataPath + "/invAmount.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/invAmount.dat");
+        }
+        if (File.Exists(Application.persistentDataPath + "/invSelected.dat"))
 		{
 			File.Delete(Application.persistentDataPath + "/invSelected.dat");
+            Inventory.inventorySelected = 0;
 		}
+        if (File.Exists(Application.persistentDataPath + "/ammo.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/ammo.dat");
+            Inventory.ammo = 60;
+        }
+        if (File.Exists(Application.persistentDataPath + "/health.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/health.dat");
+            Inventory.health = 10;
+        }
         ResetPermancy();
     }
     public static void ResetPermancy()

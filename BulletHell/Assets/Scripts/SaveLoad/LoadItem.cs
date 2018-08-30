@@ -20,7 +20,10 @@ public static class LoadItem
 		if (ItemID == "g001")
 			NewItemPath = "Prefabs/Guns/literalGun";				//Literal Gun
 		if (ItemID == "g002")
-			NewItemPath = "Prefabs/Guns/Gun_";					//Gun?
+			NewItemPath = "Prefabs/Guns/Gun_";					    //Gun?
+
+        if (ItemID == "i001")
+            NewItemPath = "Prefabs/Items/PickUpTrial";              //ItemTrial
 
 		return;
     }
@@ -40,7 +43,10 @@ public static class LoadItem
 			NewItemID = "g001";
 		if (ItemName == "Gun_" || ItemName == "Gun?")					//Gun?
 			NewItemID = "g002";
-			
-		return;
+
+        if (ItemName == "PickUpTrial")                                  //ItemTrial
+            NewItemID = "i001";
+
+        return;
 	}
 }
