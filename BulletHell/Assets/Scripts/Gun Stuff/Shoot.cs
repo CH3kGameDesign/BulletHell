@@ -56,8 +56,10 @@ public class Shoot : MonoBehaviour {
 						canShoot = false;
 						fireTimer = 0;
 						ammo -= 1;
+                        Inventory.shotsFired++;
+                        Inventory.shotsFiredTotal++;
 
-						Instantiate (muzzleFlash, activeGun.transform.GetChild(0).gameObject.transform.position + activeGun.transform.forward, transform.rotation);
+                        Instantiate (muzzleFlash, activeGun.transform.GetChild(0).gameObject.transform.position + activeGun.transform.forward, transform.rotation);
 
 						Instantiate (bullet, activeGun.transform.GetChild(0).gameObject.transform.position + activeGun.transform.forward, (activeGun.transform.rotation * Quaternion.Euler (0, Random.Range (-activeGun.GetComponent<GunData> ().bulletSpread, activeGun.GetComponent<GunData> ().bulletSpread), 0)));
 

@@ -18,13 +18,15 @@ public class Enemy : MonoBehaviour {
             GameObject explodeGuy = Instantiate(deadGuy, transform.position, transform.rotation);
 			explodeGuy.transform.SetParent(GameObject.Find("PermancyStuff").transform);
             explodeGuy.GetComponent<Rigidbody>().AddExplosionForce(500, bulletPos, 10);
-            Destroy(this.gameObject);
+            
 
 			int randomDrop = Random.Range (0, drops.Capacity);
 			Debug.Log (randomDrop);
 
 			if (drops[randomDrop] != null)
 				Instantiate (drops [randomDrop], transform.position, transform.rotation);
+            
+            Destroy(this.gameObject);
         }
 	}
 }

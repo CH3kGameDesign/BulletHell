@@ -20,4 +20,7 @@ public class Inventory
     public static int health = 10;
     public static float ammo = 60;
     public static List<float> time = new List<float> ();
+
+    public static int shotsFired = 0;
+    public static int shotsFiredTotal = 0;
 }

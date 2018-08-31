@@ -60,6 +60,16 @@ public static class SaveLoad
         bf.Serialize(fs, Inventory.ammo);
         fs.Close();
 
+        //Shots Fired
+        fs = new FileStream(Application.persistentDataPath + "/shotsFired.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Inventory.shotsFired);
+        fs.Close();
+
+        fs = new FileStream(Application.persistentDataPath + "/shotsFiredTotal.dat", FileMode.Create);
+        bf = new BinaryFormatter();
+        bf.Serialize(fs, Inventory.shotsFiredTotal);
+        fs.Close();
 
         //Permancy
         //////////////////////////////////////////////////////////////////
@@ -138,6 +148,20 @@ public static class SaveLoad
 
             Inventory.ammo = (float)bformatter.Deserialize(stream);
         }
+
+        using (Stream stream = File.Open(Application.persistentDataPath + "/shotsFired.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Inventory.shotsFired = (int)bformatter.Deserialize(stream);
+        }
+
+        using (Stream stream = File.Open(Application.persistentDataPath + "/shotsFiredTotal.dat", FileMode.Open))
+        {
+            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            Inventory.shotsFiredTotal = (int)bformatter.Deserialize(stream);
+        }
         LoadPermancy ();
     }
 
@@ -197,6 +221,11 @@ public static class SaveLoad
             File.Delete(Application.persistentDataPath + "/health.dat");
             Inventory.health = 10;
         }
+        if (File.Exists(Application.persistentDataPath + "/shotsFiredTotal.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/shotsFiredTotal.dat");
+            Inventory.shotsFiredTotal = 0;
+        }
         ResetPermancy();
     }
     public static void ResetPermancy()
@@ -236,5 +265,12 @@ public static class SaveLoad
 		if (File.Exists (Application.persistentDataPath + "/time.dat")) {
 			File.Delete(Application.persistentDataPath + "/time.dat");
 		}
+
+        if (File.Exists(Application.persistentDataPath + "/shotsFired.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/shotsFired.dat");
+            Inventory.shotsFired = 0;
+        }
+        Save();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Couch : MonoBehaviour {
 
@@ -13,7 +14,12 @@ public class Couch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (GameObject.Find("SleepMenu").transform.GetChild(0).gameObject.activeInHierarchy == true)
+            GameObject.Find("SleepMenu").transform.GetChild(0).gameObject.SetActive(false);
+            SaveLoad.ResetPermancy();
+        }
 	}
 
     private void OnTriggerStay(Collider other)
@@ -32,9 +38,14 @@ public class Couch : MonoBehaviour {
 						for (int i = 0; i < GameObject.Find("PermancyStuff").transform.childCount; i++) {
 							GameObject.Destroy(GameObject.Find ("PermancyStuff").transform.GetChild (i).gameObject);
 						}
-                        other.GetComponent<PlayerHealth>().health = other.GetComponent<PlayerHealth>().healthLimit;
+                        GameObject.Find("SleepMenu").transform.GetChild(0).gameObject.SetActive(true);
+                        GameObject.Find("ShotsFired").GetComponent<Text>().text = "Shots Fired: " + Inventory.shotsFired;
+                        GameObject.Find("ShotsFiredTotal").GetComponent<Text>().text = "Shots Fired Total: " + Inventory.shotsFiredTotal;
 
-                        SaveLoad.ResetPermancy ();
+                        other.GetComponent<PlayerHealth>().health = other.GetComponent<PlayerHealth>().healthLimit;
+                        
+                        //SaveLoad.ResetPermancy ();
+                        SaveLoad.Save();
 					}
 				} else {
 					other.gameObject.GetComponent<InventorySelect> ().ChangeItem ();
