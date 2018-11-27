@@ -787,26 +787,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114547381663708722, guid: 645c69b31bed1e042bdcedb32633b7f2,
-        type: 2}
-      propertyPath: selectedSlot
-      value: 
-      objectReference: {fileID: 683681722}
-    - target: {fileID: 114529395969446972, guid: 645c69b31bed1e042bdcedb32633b7f2,
-        type: 2}
-      propertyPath: emptySlot
-      value: 
-      objectReference: {fileID: 1925298501}
-    - target: {fileID: 114532601368808020, guid: 645c69b31bed1e042bdcedb32633b7f2,
-        type: 2}
-      propertyPath: healthCounter
-      value: 
-      objectReference: {fileID: 1786750490}
-    - target: {fileID: 114532601368808020, guid: 645c69b31bed1e042bdcedb32633b7f2,
-        type: 2}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 72675786}
     - target: {fileID: 114242393209272492, guid: 645c69b31bed1e042bdcedb32633b7f2,
         type: 2}
       propertyPath: ammoCounter
@@ -817,10 +797,26 @@ Prefab:
       propertyPath: ammoBar
       value: 
       objectReference: {fileID: 18503487}
-    - target: {fileID: 1845170867174722, guid: 645c69b31bed1e042bdcedb32633b7f2, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
+    - target: {fileID: 114532601368808020, guid: 645c69b31bed1e042bdcedb32633b7f2,
+        type: 2}
+      propertyPath: healthCounter
+      value: 
+      objectReference: {fileID: 1786750490}
+    - target: {fileID: 114532601368808020, guid: 645c69b31bed1e042bdcedb32633b7f2,
+        type: 2}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 72675786}
+    - target: {fileID: 114529395969446972, guid: 645c69b31bed1e042bdcedb32633b7f2,
+        type: 2}
+      propertyPath: emptySlot
+      value: 
+      objectReference: {fileID: 1925298501}
+    - target: {fileID: 114547381663708722, guid: 645c69b31bed1e042bdcedb32633b7f2,
+        type: 2}
+      propertyPath: selectedSlot
+      value: 
+      objectReference: {fileID: 683681722}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 645c69b31bed1e042bdcedb32633b7f2, type: 2}
   m_IsPrefabParent: 0

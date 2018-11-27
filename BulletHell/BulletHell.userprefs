@@ -1,13 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PickUp.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shaders\SpriteAnimationXray.shader">
     <Files>
-      <File FileName="Assets\Scripts\SaveLoad\SaveLoad.cs" Line="144" Column="4" />
+      <File FileName="Assets\Scripts\SaveLoad\SaveLoad.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Enemy\GuardVisionCone.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Enemy\Guard.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\InventorySelect.cs" Line="16" Column="3" />
-      <File FileName="Assets\Scripts\SaveLoad\Inventory.cs" Line="17" Column="42" />
-      <File FileName="Assets\Scripts\Player\PickUp.cs" Line="30" Column="36" />
+      <File FileName="Assets\Scripts\Player\InventorySelect.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SaveLoad\Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PickUp.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\Movement.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Gun Stuff\Shoot.cs" Line="1" Column="1" />
@@ -25,10 +25,13 @@
       <File FileName="Assets\Scripts\Train\InsideTrain.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Couch.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\Aim.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TimeController.cs" Line="25" Column="4" />
-      <File FileName="Assets\Scripts\PermancyRecord.cs" Line="15" Column="18" />
-      <File FileName="Assets\Scripts\SaveLoad\LoadItem.cs" Line="38" Column="3" />
+      <File FileName="Assets\Scripts\TimeController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PermancyRecord.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SaveLoad\LoadItem.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SaveLoad\Permancy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SpriteChange.cs" Line="83" Column="103" />
+      <File FileName="Assets\Shaders\XRay Silhouette.shader" Line="87" Column="3" />
+      <File FileName="Assets\Shaders\SpriteAnimationXray.shader" Line="26" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
