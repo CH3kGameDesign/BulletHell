@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 224617505911036668}
   - component: {fileID: 222453964219253484}
   - component: {fileID: 114338719179277014}
+  - component: {fileID: 114146594971814518}
   m_Layer: 5
   m_Name: HealthCounter
   m_TagString: Untagged
@@ -329,6 +330,7 @@ GameObject:
   - component: {fileID: 224758647314350816}
   - component: {fileID: 222588025426375180}
   - component: {fileID: 114198319545545696}
+  - component: {fileID: 114184854311606148}
   m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
@@ -483,6 +485,7 @@ GameObject:
   - component: {fileID: 224551217688435404}
   - component: {fileID: 222920434502561818}
   - component: {fileID: 114355147358953220}
+  - component: {fileID: 114215586854777456}
   m_Layer: 5
   m_Name: AmmoCounter
   m_TagString: Untagged
@@ -957,6 +960,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114146594971814518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1467428244214142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.47058824}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114166672482509010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1017,6 +1034,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 0
+--- !u!114 &114184854311606148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1579242601669308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114195752963527690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1077,6 +1108,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 08:00
+--- !u!114 &114215586854777456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774473493614428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.47058824}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114232121616532460
 MonoBehaviour:
   m_ObjectHideFlags: 1
