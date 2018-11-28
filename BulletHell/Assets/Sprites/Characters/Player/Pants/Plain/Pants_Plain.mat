@@ -87,6 +87,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorOverlay: {r: 1, g: 0, b: 0, a: 1}
+    - _ColorOverlay: {r: 0.36797142, g: 0.37931475, b: 0.60294116, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SilColor: {r: 1, g: 1, b: 1, a: 0}

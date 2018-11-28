@@ -588,6 +588,9 @@
     <None Include="Assets\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
     <None Include="Assets\ShaderForge\Readme.txt" />
     <None Include="Assets\Shaders\Outline.shader" />
+    <None Include="Assets\Shaders\SpriteAnimation.shader" />
+    <None Include="Assets\Shaders\SpriteAnimationXray.shader" />
+    <None Include="Assets\Shaders\XRay Silhouette.shader" />
     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />

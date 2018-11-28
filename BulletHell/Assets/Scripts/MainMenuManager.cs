@@ -7,8 +7,12 @@ using System.IO;
 
 public class MainMenuManager : MonoBehaviour {
 
-	public GameObject emptySlot;
+    public GameObject mainMenu;
+    public GameObject charMenu;
+    public GameObject sprites;
 
+    public GameObject emptySlot;
+    
 	public Texture2D cursor;
 
 	// Use this for initialization
@@ -72,6 +76,22 @@ public class MainMenuManager : MonoBehaviour {
         for (int i = 0; i < 12; i++)
         {
             Inventory.inventoryListAmount.Add(0);                                           
+        }
+    }
+
+    public void ChangeMenu (int selection)
+    {
+        if (selection == 0)
+        {
+            mainMenu.SetActive(true);
+            charMenu.SetActive(false);
+            sprites.SetActive(false);
+        }
+        if (selection == 1)
+        {
+            mainMenu.SetActive(false);
+            charMenu.SetActive(true);
+            sprites.SetActive(true);
         }
     }
 

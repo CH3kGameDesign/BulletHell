@@ -21,6 +21,14 @@ public class Inventory
     public static float ammo = 60;
     public static List<float> time = new List<float> ();
 
+    public static List<int> featureSelection = new List<int>();
+
+    public static List<float> featureSlider0 = new List<float>();
+    public static List<float> featureSlider1 = new List<float>();
+    public static List<float> featureSlider2 = new List<float>();
+    public static List<float> featureSlider3 = new List<float>();
+    public static List<float> featureSlider4 = new List<float>();
+
     public static int shotsFired = 0;
     public static int shotsFiredTotal = 0;
 }
