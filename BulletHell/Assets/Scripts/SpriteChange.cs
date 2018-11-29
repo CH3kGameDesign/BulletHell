@@ -12,6 +12,9 @@ public class SpriteChange : MonoBehaviour {
 
     private Vector3 pastPosition = Vector3.zero;
 
+    MeshRenderer[] mRenderers;
+    MeshRenderer[] mNCRenderers;
+
     // Use this for initialization
     void Start()
     {
@@ -20,6 +23,28 @@ public class SpriteChange : MonoBehaviour {
         NCSprites = transform.GetChild(2).gameObject;
         pastPosition = transform.position;
 
+        mRenderers = sprites.GetComponentsInChildren<MeshRenderer>();
+        mNCRenderers = NCSprites.GetComponentsInChildren<MeshRenderer>();
+
+        mRenderers[4].material = PlayerMaterialHolder.Hats[PlayerMaterialHolder.featureSelection[0]];
+        mRenderers[3].material = PlayerMaterialHolder.Faces[PlayerMaterialHolder.featureSelection[1]];
+        mRenderers[2].material = PlayerMaterialHolder.Shirts[PlayerMaterialHolder.featureSelection[2]];
+        mRenderers[1].material = PlayerMaterialHolder.Pants[PlayerMaterialHolder.featureSelection[3]];
+
+        mNCRenderers[4].material = PlayerMaterialHolder.NCHats[PlayerMaterialHolder.featureSelection[0]];
+        mNCRenderers[3].material = PlayerMaterialHolder.NCFaces[PlayerMaterialHolder.featureSelection[1]];
+        mNCRenderers[2].material = PlayerMaterialHolder.NCShirts[PlayerMaterialHolder.featureSelection[2]];
+        mNCRenderers[1].material = PlayerMaterialHolder.NCPants[PlayerMaterialHolder.featureSelection[3]];
+
+
+        //Debug.Log("0: " + PlayerMaterialHolder.featureSlider0[0] + " " + "1: " + PlayerMaterialHolder.featureSlider0[1] + " " + "2: " + PlayerMaterialHolder.featureSlider0[2]);
+        
+        mRenderers[0].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider0[0], PlayerMaterialHolder.featureSlider0[1], PlayerMaterialHolder.featureSlider0[2]));
+        mRenderers[1].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider1[0], PlayerMaterialHolder.featureSlider1[1], PlayerMaterialHolder.featureSlider1[2]));
+        mRenderers[2].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider2[0], PlayerMaterialHolder.featureSlider2[1], PlayerMaterialHolder.featureSlider2[2]));
+        mRenderers[3].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider3[0], PlayerMaterialHolder.featureSlider3[1], PlayerMaterialHolder.featureSlider3[2]));
+        mRenderers[4].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider4[0], PlayerMaterialHolder.featureSlider4[1], PlayerMaterialHolder.featureSlider4[2]));
+        
         for (int i = 0; i < sprites.transform.childCount; i++)
         {
             //sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material

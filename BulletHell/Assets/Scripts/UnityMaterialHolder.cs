@@ -47,6 +47,8 @@ public class UnityMaterialHolder : MonoBehaviour {
         PlayerMaterialHolder.NCFaces = NCFaces;
         PlayerMaterialHolder.NCShirts = NCShirts;
         PlayerMaterialHolder.NCPants = NCPants;
+        
+        //SaveLoad.Load();
     }
 	
 	// Update is called once per frame

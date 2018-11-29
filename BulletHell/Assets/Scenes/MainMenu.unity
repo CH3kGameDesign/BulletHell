@@ -7990,7 +7990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterSprites: {fileID: 731320864}
   MainMenuManager: {fileID: 1290836417}
-  PlayerMaterialHolder: {fileID: 878523546}
+  UnityMaterialHolder: {fileID: 878523546}
   Sliders0:
   - {fileID: 1109888358}
   - {fileID: 198087286}
