@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharCustomization : MonoBehaviour {
 
 	public GameObject CharacterSprites;
     public GameObject MainMenuManager;
-    public GameObject PlayerMaterialHolder;
+    public GameObject UnityMaterialHolder;
 
 	private List<Material> Hats = new List<Material>();
     private List<Material> Faces = new List<Material>();
     private List<Material> Shirts = new List<Material>();
     private List<Material> Pants = new List<Material>();
+
+    private List<Material> NCHats = new List<Material>();
+    private List<Material> NCFaces = new List<Material>();
+    private List<Material> NCShirts = new List<Material>();
+    private List<Material> NCPants = new List<Material>();
 
     public List<Slider> Sliders0 = new List<Slider>();
     public List<Slider> Sliders1 = new List<Slider>();
@@ -24,30 +30,36 @@ public class CharCustomization : MonoBehaviour {
     public List<Text> SelectionNo = new List<Text> ();
 
     MeshRenderer[] mRenderers;
+    MeshRenderer[] mNCRenderers;
 
     // Use this for initialization
     void Start () {
         SaveLoad.Load();
 
-        Hats = PlayerMaterialHolder.GetComponent<PlayerMaterialHolder>().Hats;
-        Faces = PlayerMaterialHolder.GetComponent<PlayerMaterialHolder>().Faces;
-        Shirts = PlayerMaterialHolder.GetComponent<PlayerMaterialHolder>().Shirts;
-        Pants = PlayerMaterialHolder.GetComponent<PlayerMaterialHolder>().Pants;
+        Hats = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().Hats;
+        Faces = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().Faces;
+        Shirts = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().Shirts;
+        Pants = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().Pants;
 
-        mRenderers = CharacterSprites.GetComponentsInChildren<MeshRenderer>();
+        NCHats = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().NCHats;
+        NCFaces = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().NCFaces;
+        NCShirts = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().NCShirts;
+        NCPants = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().NCPants;
 
-        if (Inventory.featureSlider0.Count < 1)
+        mRenderers = CharacterSprites.transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
+        mNCRenderers = CharacterSprites.transform.GetChild(1).GetComponentsInChildren<MeshRenderer>();
+        if (PlayerMaterialHolder.featureSlider0.Count < 1)
         {
             for (int i = 0; i < 3; i++)
             {
-                Inventory.featureSlider0.Add(0);
-                Inventory.featureSlider1.Add(0);
-                Inventory.featureSlider2.Add(0);
-                Inventory.featureSlider3.Add(0);
-                Inventory.featureSlider4.Add(0);
+                PlayerMaterialHolder.featureSlider0.Add(0);
+                PlayerMaterialHolder.featureSlider1.Add(0);
+                PlayerMaterialHolder.featureSlider2.Add(0);
+                PlayerMaterialHolder.featureSlider3.Add(0);
+                PlayerMaterialHolder.featureSlider4.Add(0);
             }
-            Inventory.featureSelection = Selections;
-
+            PlayerMaterialHolder.featureSelection = Selections;
+            
             Color BodyColour = mRenderers[0].material.GetColor("_ColorOverlay");
             Color PantsColour = mRenderers[1].material.GetColor("_ColorOverlay");
             Color ShirtColour = mRenderers[2].material.GetColor("_ColorOverlay");
@@ -57,59 +69,59 @@ public class CharCustomization : MonoBehaviour {
             float H, S, V;
 
             Color.RGBToHSV(BodyColour, out H, out S, out V);
-            Inventory.featureSlider0[0] = H;
-            Inventory.featureSlider0[1] = S;
-            Inventory.featureSlider0[2] = V;
+            PlayerMaterialHolder.featureSlider0[0] = H;
+            PlayerMaterialHolder.featureSlider0[1] = S;
+            PlayerMaterialHolder.featureSlider0[2] = V;
 
 
             Color.RGBToHSV(PantsColour, out H, out S, out V);
-            Inventory.featureSlider1[0] = H;
-            Inventory.featureSlider1[1] = S;
-            Inventory.featureSlider1[2] = V;
+            PlayerMaterialHolder.featureSlider1[0] = H;
+            PlayerMaterialHolder.featureSlider1[1] = S;
+            PlayerMaterialHolder.featureSlider1[2] = V;
 
             Color.RGBToHSV(ShirtColour, out H, out S, out V);
-            Inventory.featureSlider2[0] = H;
-            Inventory.featureSlider2[1] = S;
-            Inventory.featureSlider2[2] = V;
+            PlayerMaterialHolder.featureSlider2[0] = H;
+            PlayerMaterialHolder.featureSlider2[1] = S;
+            PlayerMaterialHolder.featureSlider2[2] = V;
 
             Color.RGBToHSV(FaceColour, out H, out S, out V);
-            Inventory.featureSlider3[0] = H;
-            Inventory.featureSlider3[1] = S;
-            Inventory.featureSlider3[2] = V;
+            PlayerMaterialHolder.featureSlider3[0] = H;
+            PlayerMaterialHolder.featureSlider3[1] = S;
+            PlayerMaterialHolder.featureSlider3[2] = V;
 
             Color.RGBToHSV(HatColour, out H, out S, out V);
-            Inventory.featureSlider4[0] = H;
-            Inventory.featureSlider4[1] = S;
-            Inventory.featureSlider4[2] = V;
+            PlayerMaterialHolder.featureSlider4[0] = H;
+            PlayerMaterialHolder.featureSlider4[1] = S;
+            PlayerMaterialHolder.featureSlider4[2] = V;
         }
 
         for (int i = 0; i < 3; i++)
         {
-            Sliders0[i].value = Inventory.featureSlider0[i];
-            Sliders1[i].value = Inventory.featureSlider1[i];
-            Sliders2[i].value = Inventory.featureSlider2[i];
-            Sliders3[i].value = Inventory.featureSlider3[i];
-            Sliders4[i].value = Inventory.featureSlider4[i];
+            Sliders0[i].value = PlayerMaterialHolder.featureSlider0[i];
+            Sliders1[i].value = PlayerMaterialHolder.featureSlider1[i];
+            Sliders2[i].value = PlayerMaterialHolder.featureSlider2[i];
+            Sliders3[i].value = PlayerMaterialHolder.featureSlider3[i];
+            Sliders4[i].value = PlayerMaterialHolder.featureSlider4[i];
         }
 
-        Selections = Inventory.featureSelection;
+        Selections = PlayerMaterialHolder.featureSelection;
         UpdateFeatures();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Inventory.featureSlider0.Count < 1)
+        if (PlayerMaterialHolder.featureSlider0.Count < 1)
         {
             for (int i = 0; i < 3; i++)
             {
-                Inventory.featureSlider0.Add(0);
-                Inventory.featureSlider1.Add(0);
-                Inventory.featureSlider2.Add(0);
-                Inventory.featureSlider3.Add(0);
-                Inventory.featureSlider4.Add(0);
+                PlayerMaterialHolder.featureSlider0.Add(0);
+                PlayerMaterialHolder.featureSlider1.Add(0);
+                PlayerMaterialHolder.featureSlider2.Add(0);
+                PlayerMaterialHolder.featureSlider3.Add(0);
+                PlayerMaterialHolder.featureSlider4.Add(0);
             }
-            Inventory.featureSelection = Selections;
+            PlayerMaterialHolder.featureSelection = Selections;
         }
 
     }
@@ -180,6 +192,11 @@ public class CharCustomization : MonoBehaviour {
 		mRenderers [3].material = Faces [Selections[1]];
 		mRenderers [4].material = Hats [Selections[0]];
 
+        mNCRenderers[1].material = NCPants[Selections[3]];
+        mNCRenderers[2].material = NCShirts[Selections[2]];
+        mNCRenderers[3].material = NCFaces[Selections[1]];
+        mNCRenderers[4].material = NCHats[Selections[0]];
+
         mRenderers[0].material.SetColor("_ColorOverlay", Color.HSVToRGB(Sliders0[0].value, Sliders0[1].value, Sliders0[2].value));
         mRenderers[1].material.SetColor("_ColorOverlay", Color.HSVToRGB(Sliders1[0].value, Sliders1[1].value, Sliders1[2].value));
         mRenderers[2].material.SetColor("_ColorOverlay", Color.HSVToRGB(Sliders2[0].value, Sliders2[1].value, Sliders2[2].value));
@@ -189,15 +206,15 @@ public class CharCustomization : MonoBehaviour {
 
     public void UpdateFeatureValues()
     {
-        Inventory.featureSelection = Selections;
+        PlayerMaterialHolder.featureSelection = Selections;
         
         for (int i = 0; i < 3; i++)
         {
-            Inventory.featureSlider0[i] = Sliders0[i].value;
-            Inventory.featureSlider1[i] = Sliders1[i].value;
-            Inventory.featureSlider2[i] = Sliders2[i].value;
-            Inventory.featureSlider3[i] = Sliders3[i].value;
-            Inventory.featureSlider4[i] = Sliders4[i].value;
+            PlayerMaterialHolder.featureSlider0[i] = Sliders0[i].value;
+            PlayerMaterialHolder.featureSlider1[i] = Sliders1[i].value;
+            PlayerMaterialHolder.featureSlider2[i] = Sliders2[i].value;
+            PlayerMaterialHolder.featureSlider3[i] = Sliders3[i].value;
+            PlayerMaterialHolder.featureSlider4[i] = Sliders4[i].value;
         }
         SaveLoad.Save();
         MainMenuManager.GetComponent<MainMenuManager>().ChangeMenu(0);
@@ -205,19 +222,19 @@ public class CharCustomization : MonoBehaviour {
 
     public void CancelFeatureValues ()
     {
-        Selections = Inventory.featureSelection;
+        Selections = PlayerMaterialHolder.featureSelection;
         for (int i = 0; i < 4; i++)
         {
-            Debug.Log(Selections[i] + " == " + Inventory.featureSelection[i]);
+            Debug.Log(Selections[i] + " == " + PlayerMaterialHolder.featureSelection[i]);
         }
         
         for (int i = 0; i < 3; i++)
         {
-            Sliders0[i].value = Inventory.featureSlider0[i];
-            Sliders1[i].value = Inventory.featureSlider1[i];
-            Sliders2[i].value = Inventory.featureSlider2[i];
-            Sliders3[i].value = Inventory.featureSlider3[i];
-            Sliders4[i].value = Inventory.featureSlider4[i];
+            Sliders0[i].value = PlayerMaterialHolder.featureSlider0[i];
+            Sliders1[i].value = PlayerMaterialHolder.featureSlider1[i];
+            Sliders2[i].value = PlayerMaterialHolder.featureSlider2[i];
+            Sliders3[i].value = PlayerMaterialHolder.featureSlider3[i];
+            Sliders4[i].value = PlayerMaterialHolder.featureSlider4[i];
         }
         UpdateFeatures();
         MainMenuManager.GetComponent<MainMenuManager>().ChangeMenu(0);

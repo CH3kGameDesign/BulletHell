@@ -44,28 +44,28 @@ public static class SaveLoad
         //CharacterDetails
         fs = new FileStream(Application.persistentDataPath + "/SaveData/Char/featureSelection.dat", FileMode.Create);
         bf = new BinaryFormatter();
-        bf.Serialize(fs, Inventory.featureSelection);
+        bf.Serialize(fs, PlayerMaterialHolder.featureSelection);
         fs.Close();
 
         fs = new FileStream(Application.persistentDataPath + "/SaveData/Char/featureSlider0.dat", FileMode.Create);
         bf = new BinaryFormatter();
-        bf.Serialize(fs, Inventory.featureSlider0);
+        bf.Serialize(fs, PlayerMaterialHolder.featureSlider0);
         fs.Close();
         fs = new FileStream(Application.persistentDataPath + "/SaveData/Char/featureSlider1.dat", FileMode.Create);
         bf = new BinaryFormatter();
-        bf.Serialize(fs, Inventory.featureSlider1);
+        bf.Serialize(fs, PlayerMaterialHolder.featureSlider1);
         fs.Close();
         fs = new FileStream(Application.persistentDataPath + "/SaveData/Char/featureSlider2.dat", FileMode.Create);
         bf = new BinaryFormatter();
-        bf.Serialize(fs, Inventory.featureSlider2);
+        bf.Serialize(fs, PlayerMaterialHolder.featureSlider2);
         fs.Close();
         fs = new FileStream(Application.persistentDataPath + "/SaveData/Char/featureSlider3.dat", FileMode.Create);
         bf = new BinaryFormatter();
-        bf.Serialize(fs, Inventory.featureSlider3);
+        bf.Serialize(fs, PlayerMaterialHolder.featureSlider3);
         fs.Close();
         fs = new FileStream(Application.persistentDataPath + "/SaveData/Char/featureSlider4.dat", FileMode.Create);
         bf = new BinaryFormatter();
-        bf.Serialize(fs, Inventory.featureSlider4);
+        bf.Serialize(fs, PlayerMaterialHolder.featureSlider4);
         fs.Close();
 
         //Time
@@ -158,38 +158,38 @@ public static class SaveLoad
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-            Inventory.featureSelection = (List<int>)bformatter.Deserialize(stream);
+            PlayerMaterialHolder.featureSelection = (List<int>)bformatter.Deserialize(stream);
         }
 
         using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider0.dat", FileMode.Open))
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-            Inventory.featureSlider0 = (List<float>)bformatter.Deserialize(stream);
+            PlayerMaterialHolder.featureSlider0 = (List<float>)bformatter.Deserialize(stream);
         }
         using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider1.dat", FileMode.Open))
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-            Inventory.featureSlider1 = (List<float>)bformatter.Deserialize(stream);
+            PlayerMaterialHolder.featureSlider1 = (List<float>)bformatter.Deserialize(stream);
         }
         using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider2.dat", FileMode.Open))
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-            Inventory.featureSlider2 = (List<float>)bformatter.Deserialize(stream);
+            PlayerMaterialHolder.featureSlider2 = (List<float>)bformatter.Deserialize(stream);
         }
         using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider3.dat", FileMode.Open))
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-            Inventory.featureSlider3 = (List<float>)bformatter.Deserialize(stream);
+            PlayerMaterialHolder.featureSlider3 = (List<float>)bformatter.Deserialize(stream);
         }
         using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider4.dat", FileMode.Open))
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-            Inventory.featureSlider4 = (List<float>)bformatter.Deserialize(stream);
+            PlayerMaterialHolder.featureSlider4 = (List<float>)bformatter.Deserialize(stream);
         }
 
         using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/time.dat", FileMode.Open))
@@ -278,32 +278,32 @@ public static class SaveLoad
         if (File.Exists(Application.persistentDataPath + "/SaveData/Char/featureSelection.dat"))
         {
             File.Delete(Application.persistentDataPath + "/SaveData/Char/featureSelection.dat");
-            Inventory.featureSelection = new List<int>();
+            PlayerMaterialHolder.featureSelection = new List<int>();
         }
         if (File.Exists(Application.persistentDataPath + "/SaveData/Char/featureSlider0.dat"))
         {
             File.Delete(Application.persistentDataPath + "/SaveData/Char/featureSlider0.dat");
-            Inventory.featureSlider0 = new List<float>();
+            PlayerMaterialHolder.featureSlider0 = new List<float>();
         }
         if (File.Exists(Application.persistentDataPath + "/SaveData/Char/featureSlider1.dat"))
         {
             File.Delete(Application.persistentDataPath + "/SaveData/Char/featureSlider1.dat");
-            Inventory.featureSlider1 = new List<float>();
+            PlayerMaterialHolder.featureSlider1 = new List<float>();
         }
         if (File.Exists(Application.persistentDataPath + "/SaveData/Char/featureSlider2.dat"))
         {
             File.Delete(Application.persistentDataPath + "/SaveData/Char/featureSlider2.dat");
-            Inventory.featureSlider2 = new List<float>();
+            PlayerMaterialHolder.featureSlider2 = new List<float>();
         }
         if (File.Exists(Application.persistentDataPath + "/SaveData/Char/featureSlider3.dat"))
         {
             File.Delete(Application.persistentDataPath + "/SaveData/Char/featureSlider3.dat");
-            Inventory.featureSlider3 = new List<float>();
+            PlayerMaterialHolder.featureSlider3 = new List<float>();
         }
         if (File.Exists(Application.persistentDataPath + "/SaveData/Char/featureSlider4.dat"))
         {
             File.Delete(Application.persistentDataPath + "/SaveData/Char/featureSlider4.dat");
-            Inventory.featureSlider4 = new List<float>();
+            PlayerMaterialHolder.featureSlider4 = new List<float>();
         }
         if (File.Exists(Application.persistentDataPath + "/SaveData/ammo.dat"))
         {

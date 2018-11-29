@@ -413,6 +413,7 @@
     <Compile Include="Assets\Scripts\Train\GoToDestination.cs" />
     <Compile Include="Assets\Scripts\Train\InsideTrain.cs" />
     <Compile Include="Assets\Scripts\TriggerDisplay.cs" />
+    <Compile Include="Assets\Scripts\UnityMaterialHolder.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
