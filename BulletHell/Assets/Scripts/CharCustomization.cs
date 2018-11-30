@@ -217,7 +217,8 @@ public class CharCustomization : MonoBehaviour {
             PlayerMaterialHolder.featureSlider4[i] = Sliders4[i].value;
         }
         SaveLoad.Save();
-        MainMenuManager.GetComponent<MainMenuManager>().ChangeMenu(0);
+        //MainMenuManager.GetComponent<MainMenuManager>().ChangeMenu(0);
+        SceneManager.LoadScene(1);
     }
 
     public void CancelFeatureValues ()

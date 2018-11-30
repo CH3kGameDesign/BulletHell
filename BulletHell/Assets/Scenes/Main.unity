@@ -15264,10 +15264,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1354891652161866, guid: 890be794a60d4984f8aebda8a8d0a790, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 890be794a60d4984f8aebda8a8d0a790, type: 2}
   m_IsPrefabParent: 0
@@ -27247,7 +27243,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh14254
+  m_Name: pb_Mesh37928
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

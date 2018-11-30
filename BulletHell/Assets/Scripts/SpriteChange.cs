@@ -38,13 +38,9 @@ public class SpriteChange : MonoBehaviour {
 
 
         //Debug.Log("0: " + PlayerMaterialHolder.featureSlider0[0] + " " + "1: " + PlayerMaterialHolder.featureSlider0[1] + " " + "2: " + PlayerMaterialHolder.featureSlider0[2]);
-        
-        mRenderers[0].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider0[0], PlayerMaterialHolder.featureSlider0[1], PlayerMaterialHolder.featureSlider0[2]));
-        mRenderers[1].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider1[0], PlayerMaterialHolder.featureSlider1[1], PlayerMaterialHolder.featureSlider1[2]));
-        mRenderers[2].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider2[0], PlayerMaterialHolder.featureSlider2[1], PlayerMaterialHolder.featureSlider2[2]));
-        mRenderers[3].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider3[0], PlayerMaterialHolder.featureSlider3[1], PlayerMaterialHolder.featureSlider3[2]));
-        mRenderers[4].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider4[0], PlayerMaterialHolder.featureSlider4[1], PlayerMaterialHolder.featureSlider4[2]));
-        
+
+        UpdateColour();
+
         for (int i = 0; i < sprites.transform.childCount; i++)
         {
             //sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material
@@ -196,4 +192,22 @@ public class SpriteChange : MonoBehaviour {
 
         pastPosition = transform.position;
 	}
+
+    public void RollColour()
+    {
+        mRenderers[0].material.SetColor("_ColorOverlay", Color.red);
+        mRenderers[1].material.SetColor("_ColorOverlay", Color.red);
+        mRenderers[2].material.SetColor("_ColorOverlay", Color.red);
+        mRenderers[3].material.SetColor("_ColorOverlay", Color.red);
+        mRenderers[4].material.SetColor("_ColorOverlay", Color.red);
+    }
+
+    public void UpdateColour ()
+    {
+        mRenderers[0].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider0[0], PlayerMaterialHolder.featureSlider0[1], PlayerMaterialHolder.featureSlider0[2]));
+        mRenderers[1].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider1[0], PlayerMaterialHolder.featureSlider1[1], PlayerMaterialHolder.featureSlider1[2]));
+        mRenderers[2].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider2[0], PlayerMaterialHolder.featureSlider2[1], PlayerMaterialHolder.featureSlider2[2]));
+        mRenderers[3].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider3[0], PlayerMaterialHolder.featureSlider3[1], PlayerMaterialHolder.featureSlider3[2]));
+        mRenderers[4].material.SetColor("_ColorOverlay", Color.HSVToRGB(PlayerMaterialHolder.featureSlider4[0], PlayerMaterialHolder.featureSlider4[1], PlayerMaterialHolder.featureSlider4[2]));
+    }
 }
