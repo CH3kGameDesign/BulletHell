@@ -103,6 +103,7 @@
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
      <Compile Include="Assets\Scripts\AnimationController.cs" />
+     <Compile Include="Assets\Scripts\CharCustomization.cs" />
      <Compile Include="Assets\Scripts\Couch.cs" />
      <Compile Include="Assets\Scripts\Elevator.cs" />
      <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
@@ -129,14 +130,17 @@
      <Compile Include="Assets\Scripts\Player\Movement.cs" />
      <Compile Include="Assets\Scripts\Player\PickUp.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\PlayerMaterialHolder.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\Inventory.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\LoadItem.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\Permancy.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\SaveLoad.cs" />
+     <Compile Include="Assets\Scripts\SpriteChange.cs" />
      <Compile Include="Assets\Scripts\TimeController.cs" />
      <Compile Include="Assets\Scripts\Train\GoToDestination.cs" />
      <Compile Include="Assets\Scripts\Train\InsideTrain.cs" />
      <Compile Include="Assets\Scripts\TriggerDisplay.cs" />
+     <Compile Include="Assets\Scripts\UnityMaterialHolder.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
@@ -152,6 +156,7 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\LutGen.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
+     <None Include="Assets\Shaders\SpriteAnimation.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_FaceHighlight.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
      <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
@@ -187,6 +192,7 @@
      <None Include="Assets\ShaderForge\Example Assets\Shaders\LightWrapping.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
      <None Include="Assets\Shaders\Outline.shader" />
+     <None Include="Assets\Shaders\SpriteAnimationXray.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
      <None Include="Assets\ProCore\ProBuilder\About\Font\SIL Open Font License.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\TAA.shader" />
@@ -213,6 +219,7 @@
      <None Include="Assets\ProCore\ProBuilder\readme.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
+     <None Include="Assets\Shaders\XRay Silhouette.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_SmoothingPreview.shader" />
  <Reference Include="UnityEngine.UI">

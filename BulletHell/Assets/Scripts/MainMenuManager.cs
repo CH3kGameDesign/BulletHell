@@ -19,7 +19,7 @@ public class MainMenuManager : MonoBehaviour {
 	void Start () {
 		//Object emptySlotobj = PrefabUtility.GetPrefabParent (emptySlot);					*
         //Debug.Log(AssetDatabase.GetAssetPath(emptySlotobj));								*
-        if (File.Exists(Application.persistentDataPath + "/inventory.dat"))
+        if (File.Exists(Application.persistentDataPath + "/SaveData/inventory.dat"))
         {
             SaveLoad.Load();
         }
@@ -37,13 +37,14 @@ public class MainMenuManager : MonoBehaviour {
             }
         }
 
-        if (File.Exists(Application.persistentDataPath + "/permancyx.dat"))
+		if (File.Exists(Application.persistentDataPath + "/SaveData/permancyx.dat"))
         {
             SaveLoad.LoadPermancy();
         }
 
         Cursor.SetCursor (cursor, new Vector2 (7, 2), CursorMode.ForceSoftware);
 		Cursor.lockState = CursorLockMode.Confined;
+		SaveLoad.Save();
 	}
 	
 	// Update is called once per frame

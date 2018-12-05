@@ -133,100 +133,89 @@ public static class SaveLoad
         }
         */
         Debug.Log(Application.persistentDataPath);
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/inventory.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+		if (File.Exists (Application.persistentDataPath + "/SaveData/inventory.dat")) {
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/inventory.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
 
-            Inventory.inventoryList = (List<string>)bformatter.Deserialize(stream);
-        }
+				Inventory.inventoryList = (List<string>)bformatter.Deserialize (stream);
+			}
+		
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/invAmount.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
 
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/invAmount.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+				Inventory.inventoryListAmount = (List<int>)bformatter.Deserialize (stream);
+			}
+		
 
-            Inventory.inventoryListAmount = (List<int>)bformatter.Deserialize(stream);
-        }
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/invSelected.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
 
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/invSelected.dat", FileMode.Open))
-		{
-			var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+				Inventory.inventorySelected = (int)bformatter.Deserialize (stream);
+			}
 
-			Inventory.inventorySelected = (int)bformatter.Deserialize(stream);
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/Char/featureSelection.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				PlayerMaterialHolder.featureSelection = (List<int>)bformatter.Deserialize (stream);
+			}
+
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/Char/featureSlider0.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				PlayerMaterialHolder.featureSlider0 = (List<float>)bformatter.Deserialize (stream);
+			}
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/Char/featureSlider1.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				PlayerMaterialHolder.featureSlider1 = (List<float>)bformatter.Deserialize (stream);
+			}
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/Char/featureSlider2.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				PlayerMaterialHolder.featureSlider2 = (List<float>)bformatter.Deserialize (stream);
+			}
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/Char/featureSlider3.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				PlayerMaterialHolder.featureSlider3 = (List<float>)bformatter.Deserialize (stream);
+			}
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/Char/featureSlider4.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				PlayerMaterialHolder.featureSlider4 = (List<float>)bformatter.Deserialize (stream);
+			}
+
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/time.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				Inventory.time = (List<float>)bformatter.Deserialize (stream);
+			}
+
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/health.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				Inventory.health = (int)bformatter.Deserialize (stream);
+			}
+
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/ammo.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				Inventory.ammo = (float)bformatter.Deserialize (stream);
+			}
+
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/shotsFired.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				Inventory.shotsFired = (int)bformatter.Deserialize (stream);
+			}
+
+			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/shotsFiredTotal.dat", FileMode.Open)) {
+				var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter ();
+
+				Inventory.shotsFiredTotal = (int)bformatter.Deserialize (stream);
+			}
+			LoadPermancy ();
 		}
-
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSelection.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            PlayerMaterialHolder.featureSelection = (List<int>)bformatter.Deserialize(stream);
-        }
-
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider0.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            PlayerMaterialHolder.featureSlider0 = (List<float>)bformatter.Deserialize(stream);
-        }
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider1.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            PlayerMaterialHolder.featureSlider1 = (List<float>)bformatter.Deserialize(stream);
-        }
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider2.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            PlayerMaterialHolder.featureSlider2 = (List<float>)bformatter.Deserialize(stream);
-        }
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider3.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            PlayerMaterialHolder.featureSlider3 = (List<float>)bformatter.Deserialize(stream);
-        }
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/Char/featureSlider4.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            PlayerMaterialHolder.featureSlider4 = (List<float>)bformatter.Deserialize(stream);
-        }
-
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/time.dat", FileMode.Open))
-		{
-			var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-			Inventory.time = (List<float>)bformatter.Deserialize(stream);
-		}
-
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/health.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            Inventory.health = (int)bformatter.Deserialize(stream);
-        }
-
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/ammo.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            Inventory.ammo = (float)bformatter.Deserialize(stream);
-        }
-
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/shotsFired.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            Inventory.shotsFired = (int)bformatter.Deserialize(stream);
-        }
-
-        using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/shotsFiredTotal.dat", FileMode.Open))
-        {
-            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            Inventory.shotsFiredTotal = (int)bformatter.Deserialize(stream);
-        }
-        LoadPermancy ();
     }
 
     public static void LoadPermancy()
