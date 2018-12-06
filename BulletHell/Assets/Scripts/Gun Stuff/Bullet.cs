@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour {
         {
             if (other.GetComponentInChildren<GuardVisionCone>().chasing == false)
             {
-                other.GetComponent<Guard>().playersLastKnownPosition = shotOrigin;
+				other.GetComponent<Guard>().playersLastKnownPosition = shotOrigin;
                 other.GetComponentInChildren<GuardVisionCone>().chasing = true;
                 other.GetComponentInChildren<GuardVisionCone>().chaseePosition = shotOrigin;
             }

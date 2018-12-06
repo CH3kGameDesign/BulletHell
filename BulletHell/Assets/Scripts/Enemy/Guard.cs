@@ -30,11 +30,7 @@ public class Guard : MonoBehaviour {
     private int chaseTimer = 0;
     private int randomPathTimer = 0;
 
-    public float fireRate;
-    private float fireCoolDown;
-    public float bulletSpread;
-
-    public GameObject bullet;
+    
 
     
 
@@ -88,13 +84,7 @@ public class Guard : MonoBehaviour {
             {
                 navAgent.destination = transform.position;
             }
-
-            fireCoolDown += Time.deltaTime;
-            if (fireCoolDown > fireRate)
-            {
-                Instantiate(bullet, transform.position, transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread, bulletSpread), 0));
-                fireCoolDown = 0;
-            }
+			GetComponent<Enemy> ().PreAttack ();
         }
     }
 

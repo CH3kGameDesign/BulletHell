@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour {
 
             //moveDirection.y -= gravity * Time.deltaTime;
             //controller.Move(moveDirection * Time.deltaTime);                  //Speed Needs To Be 9
-            if (Input.GetMouseButtonDown(1) && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+            if (Input.GetMouseButton(1) && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             {
                 GetComponentInChildren<SpriteChange>().RollColour();
                 rollDirection = moveDirection;

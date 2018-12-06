@@ -13,7 +13,7 @@ public class GetTackled : MonoBehaviour {
     {
         if (other.tag == "Enemy")
         {
-            if (other.GetComponent<Guard>().chaseMode == true)
+			if (other.GetComponent<Guard>().chaseMode == true)
             {
                 Debug.Log("ASDFGHJKL:");
                 if (GetComponent<PlayerHealth>().invulnerable == false)

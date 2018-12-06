@@ -24,12 +24,20 @@ public static class SaveLoad
         Debug.Log("Saved To " + Application.persistentDataPath + "/Inventory.gd");
         file.Close();
         */
-
+		if (!Directory.Exists(Application.persistentDataPath + "/SaveData"))
+		{
+			Directory.CreateDirectory(Application.persistentDataPath + "/SaveData");
+		}
+		if (!Directory.Exists(Application.persistentDataPath + "/SaveData/Char"))
+		{
+			Directory.CreateDirectory(Application.persistentDataPath + "/SaveData/Char");
+		}
 		//Inventory
         FileStream fs = new FileStream(Application.persistentDataPath + "/SaveData/inventory.dat", FileMode.Create);
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(fs, Inventory.inventoryList);
         fs.Close();
+		
 
         fs = new FileStream(Application.persistentDataPath + "/SaveData/invAmount.dat", FileMode.Create);
         bf = new BinaryFormatter();
@@ -132,6 +140,14 @@ public static class SaveLoad
             file.Close();
         }
         */
+		if (!Directory.Exists(Application.persistentDataPath + "/SaveData"))
+		{
+			Directory.CreateDirectory(Application.persistentDataPath + "/SaveData");
+		}
+		if (!Directory.Exists(Application.persistentDataPath + "/SaveData/Char"))
+		{
+			Directory.CreateDirectory(Application.persistentDataPath + "/SaveData/Char");
+		}
         Debug.Log(Application.persistentDataPath);
 		if (File.Exists (Application.persistentDataPath + "/SaveData/inventory.dat")) {
 			using (Stream stream = File.Open (Application.persistentDataPath + "/SaveData/inventory.dat", FileMode.Open)) {
@@ -220,6 +236,14 @@ public static class SaveLoad
 
     public static void LoadPermancy()
     {
+		if (!Directory.Exists(Application.persistentDataPath + "/SaveData"))
+		{
+			Directory.CreateDirectory(Application.persistentDataPath + "/SaveData");
+		}
+		if (!Directory.Exists(Application.persistentDataPath + "/SaveData/Char"))
+		{
+			Directory.CreateDirectory(Application.persistentDataPath + "/SaveData/Char");
+		}
 		using (Stream stream = File.Open(Application.persistentDataPath + "/SaveData/" + SceneManager.GetActiveScene().buildIndex + "permancyx.dat", FileMode.Open))
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();

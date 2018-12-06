@@ -10,6 +10,14 @@ public class Enemy : MonoBehaviour {
 	public List<GameObject> drops;
 
     public Vector3 bulletPos;
+
+	public float fireRate;
+	private float fireCoolDown;
+	public float bulletSpread;
+
+	public int AttackType;
+
+	public GameObject bullet;
     	
 	// Update is called once per frame
 	void Update () {
@@ -28,5 +36,37 @@ public class Enemy : MonoBehaviour {
             
             Destroy(this.gameObject);
         }
+
+
+	}
+
+	public void PreAttack () {
+		if (AttackType == 1)
+			Attack1 ();
+		if (AttackType == 2)
+			Attack2 ();
+		//if (AttackType == 3)
+			//Attack3 ();
+		}
+
+	public void Attack1 () {
+		if (fireCoolDown > fireRate)
+		{
+			Instantiate(bullet, transform.position, transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread, bulletSpread), 0));
+			fireCoolDown = 0;
+		}
+		fireCoolDown += Time.deltaTime;
+	}
+
+	public void Attack2 () {
+		if (fireCoolDown > fireRate)
+		{
+			for (int i = 0; i < 6; i++) {
+				Instantiate(bullet, transform.position, transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread, bulletSpread) + (i*60), 0));
+			}
+
+			fireCoolDown = 0;
+		}
+		fireCoolDown += Time.deltaTime;
 	}
 }

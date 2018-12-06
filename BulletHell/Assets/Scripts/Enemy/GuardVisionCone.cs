@@ -34,7 +34,7 @@ public class GuardVisionCone : MonoBehaviour {
             {
                 chasing = true;
                 chaseePosition = other.gameObject.transform.position;
-                GetComponentInParent<Guard>().target = hit.collider.gameObject;
+				GetComponentInParent<Guard>().target = hit.collider.gameObject;
             }
         }
         
@@ -58,8 +58,8 @@ public class GuardVisionCone : MonoBehaviour {
                 if (hit.collider.gameObject.tag == "Player")
                 {
                     GetComponentInParent<Guard>().patrolMode = false;                                       //Turn Patrol Mode Off
-                    GetComponentInParent<Guard>().chaseMode = true;                                         //Turn Chase Mode On
-                    GetComponentInParent<Guard>().target = hit.collider.gameObject;      //Set Player's Last Known Location
+					GetComponentInParent<Guard>().chaseMode = true;                                         //Turn Chase Mode On
+					GetComponentInParent<Guard>().target = hit.collider.gameObject;      //Set Player's Last Known Location
                 }
             }
         }
