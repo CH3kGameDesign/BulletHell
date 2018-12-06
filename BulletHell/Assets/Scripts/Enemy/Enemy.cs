@@ -45,9 +45,9 @@ public class Enemy : MonoBehaviour {
 			Attack1 ();
 		if (AttackType == 2)
 			Attack2 ();
-		//if (AttackType == 3)
-			//Attack3 ();
-		}
+		if (AttackType == 3)
+			Attack3 ();
+    }
 
 	public void Attack1 () {
 		if (fireCoolDown > fireRate)
@@ -69,4 +69,30 @@ public class Enemy : MonoBehaviour {
 		}
 		fireCoolDown += Time.deltaTime;
 	}
+
+    public void Attack3()
+    {
+        if (fireCoolDown > fireRate)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject GO = Instantiate(bullet, transform.position, transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread, bulletSpread), 0));
+                GO.GetComponent<Bullet>().bulletSpeed = 10 + (i * 2);
+            }
+            fireCoolDown = 0;
+        }
+        fireCoolDown += Time.deltaTime;
+    }
+
+    public void Attack4()
+    {
+        if (fireCoolDown > fireRate)
+        {
+            GameObject GO = Instantiate(bullet, transform.position, transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread, bulletSpread), 0));
+            GO.GetComponent<Bullet>().transform.parent = this.gameObject.transform;
+
+            fireCoolDown = 0;
+        }
+        fireCoolDown += Time.deltaTime;
+    }
 }

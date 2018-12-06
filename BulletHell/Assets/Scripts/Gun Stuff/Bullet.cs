@@ -18,6 +18,8 @@ public class Bullet : MonoBehaviour {
 	private float preDamage;
 	public int damage;
 
+    public float destroyTime = 3;
+
     //Camera Shake
     public float shakeDuration;
     public float shakeAmount;
@@ -36,7 +38,7 @@ public class Bullet : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
 		transform.position += transform.forward * Time.deltaTime * bulletSpeed;
-		Destroy (this.gameObject, 3);
+		Destroy (this.gameObject, destroyTime);
 	}
 
 	public void OnTriggerStay(Collider other)
