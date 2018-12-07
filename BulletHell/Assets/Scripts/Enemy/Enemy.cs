@@ -13,7 +13,11 @@ public class Enemy : MonoBehaviour {
 
 	public float fireRate;
 	private float fireCoolDown;
-	public float bulletSpread;
+    public float fireSetRate;
+    public int fireSetAmount;
+    private int fireSetAmountCount;
+    private float fireSetCoolDown;
+    public float bulletSpread;
 
 	public int AttackType;
 
@@ -47,6 +51,8 @@ public class Enemy : MonoBehaviour {
 			Attack2 ();
 		if (AttackType == 3)
 			Attack3 ();
+        if (AttackType == 4)
+            Attack4();
     }
 
 	public void Attack1 () {
@@ -88,11 +94,22 @@ public class Enemy : MonoBehaviour {
     {
         if (fireCoolDown > fireRate)
         {
-            GameObject GO = Instantiate(bullet, transform.position, transform.rotation * Quaternion.Euler(0, Random.Range(-bulletSpread, bulletSpread), 0));
-            GO.GetComponent<Bullet>().transform.parent = this.gameObject.transform;
-
-            fireCoolDown = 0;
+            if (fireSetCoolDown > fireSetRate)
+            {
+                GameObject GO = Instantiate(bullet, transform.position, transform.rotation);
+                GO.transform.parent = this.gameObject.transform;
+                fireSetCoolDown = 0;
+                fireSetAmountCount++;
+            }
+            if (fireSetAmountCount > fireSetAmount)
+            {
+                fireCoolDown = 0;
+                fireSetAmountCount = 0;
+                fireSetCoolDown = 0;
+            }
+            
         }
         fireCoolDown += Time.deltaTime;
+        fireSetCoolDown += Time.deltaTime;
     }
 }
