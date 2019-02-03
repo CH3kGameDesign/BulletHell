@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23412331677554772}
   - component: {fileID: 114740312369624336}
   m_Layer: 12
-  m_Name: Bullet
+  m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,13 +108,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBullet: 1
+  destroyOnContact: 1
+  followEnemyAmount: 0
   bulletSpeed: 30
-  pushForce: 3
+  pushForce: 0
   shotOrigin: {x: 0, y: 0, z: 0}
   damageCounter: {fileID: 1604838222413208, guid: 23269e33a5592af498405348f97e23d1,
     type: 2}
-  damageMin: 5
-  damageMax: 12
-  damage: 2
+  damageMin: 0
+  damageMax: 0
+  damage: 0
+  destroyTime: 3
+  destroyedBullet: {fileID: 1589969812533524, guid: 065d1dcea2244e245af20a291164cefd,
+    type: 2}
   shakeDuration: 0.1
   shakeAmount: 0.1

@@ -5,6 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     public bool playerBullet;
+	public bool destroyOnContact;
+
+	public float followEnemyAmount;
+	private GameObject nearestEnemy = null;
 
 	public float bulletSpeed = 20;
 	public float pushForce = 1;
@@ -19,6 +23,7 @@ public class Bullet : MonoBehaviour {
 	public int damage;
 
     public float destroyTime = 3;
+	public GameObject destroyedBullet;
 
     //Camera Shake
     public float shakeDuration;
@@ -26,20 +31,68 @@ public class Bullet : MonoBehaviour {
     private Camera cameraMain;
 
 	void Start () {
-        shotOrigin = transform.position;
+		shotOrigin = transform.position;
 		preDamage = Random.Range (damageMin, damageMax);
 		damage = Mathf.RoundToInt (preDamage);
 
         cameraMain = Camera.main;
         cameraMain.GetComponent<CameraController>().shakeAmount = shakeAmount;
         cameraMain.GetComponent<CameraController>().shakeDuration = shakeDuration;
+
+		if (followEnemyAmount != 0) {
+			findNearestEnemy ();
+		}
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Update is called once per frame
-    void FixedUpdate () {
+	void FixedUpdate () {
 		transform.position += transform.forward * Time.deltaTime * bulletSpeed;
-		Destroy (this.gameObject, destroyTime);
+		Invoke ("DestroyTime", destroyTime);
+		if (followEnemyAmount != 0)
+		{
+			if (nearestEnemy == null && GameObject.Find ("Enemies").transform.childCount > 0)
+				findNearestEnemy ();
+			if (nearestEnemy != null) {
+				if (GetComponent<UnityEngine.AI.NavMeshAgent> () == null) {
+					Quaternion neededRotation = Quaternion.LookRotation (nearestEnemy.transform.position - transform.position);
+					transform.rotation = Quaternion.RotateTowards (transform.rotation, neededRotation, Time.deltaTime * followEnemyAmount);
+				} else {
+					UnityEngine.AI.NavMeshAgent navAgent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
+					navAgent.destination = nearestEnemy.transform.position;
+				}
+			}
+		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public void OnTriggerStay(Collider other)
 	{
@@ -59,7 +112,8 @@ public class Bullet : MonoBehaviour {
 
             cameraMain.GetComponent<CameraController>().shakeAmount = shakeAmount * 0.7f;
             cameraMain.GetComponent<CameraController>().shakeDuration = shakeDuration;
-            Destroy(this.gameObject);
+			if (destroyOnContact)
+				DestroyTime ();
 
         }
         if (other.tag == "Player" && playerBullet == false)
@@ -74,7 +128,8 @@ public class Bullet : MonoBehaviour {
                 
                 cameraMain.GetComponent<CameraController>().shakeAmount = shakeAmount * 0.7f;
                 cameraMain.GetComponent<CameraController>().shakeDuration = shakeDuration;
-                Destroy(this.gameObject);
+				if (destroyOnContact)
+					DestroyTime ();
             }
         }
         if (other.tag != "Player" && other.tag != "UsedAmmo" && other.tag != "Enemy") {
@@ -88,9 +143,69 @@ public class Bullet : MonoBehaviour {
 			}
 			cameraMain.GetComponent<CameraController> ().shakeAmount = shakeAmount * 0.7f;
 			cameraMain.GetComponent<CameraController> ().shakeDuration = shakeDuration;
-			Destroy (this.gameObject);
+			DestroyTime ();
 			
 		}
 
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	private void findNearestEnemy ()
+	{
+		List <GameObject> enemies = new List<GameObject>();
+		foreach (Transform child in GameObject.Find("Enemies").transform) {
+			if (child != GameObject.Find("Enemies").transform) {
+				if (child.gameObject.activeSelf == true && (child.position.y > transform.position.y -10 && child.position.y < transform.position.y + 10))
+					enemies.Add (child.gameObject);
+			}
+		}
+		float nearestSqrMag = float.PositiveInfinity;
+		for(int i = 0; i < enemies.Count; i++)
+		{
+			float sqrMag = (enemies[i].transform.position - transform.position).sqrMagnitude;
+			if(sqrMag < nearestSqrMag)
+			{
+				nearestSqrMag = sqrMag;
+				nearestEnemy = enemies[i];
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	private void DestroyTime ()
+	{
+		if (destroyedBullet != null) {
+			GameObject GO = Instantiate (destroyedBullet, transform.position, transform.rotation);
+			//GO.GetComponent<Rigidbody> ().velocity = transform.forward * bulletSpeed / 10;
+		}
+		Destroy (this.gameObject);
 	}
 }

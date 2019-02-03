@@ -30,11 +30,18 @@ public class GuardVisionCone : MonoBehaviour {
         {
             
 			//If Object Is Player Start Chasing
-            if (hit.collider.gameObject.tag == "Player")
+			if (hit.collider.gameObject.tag == "Player" && (hit.collider.gameObject.transform.position.y < transform.position.y + 0.5f && hit.collider.gameObject.transform.position.y > transform.position.y - 0.5f))
             {
+				if (transform.parent.transform.parent.GetChild (0).gameObject.name == "Walls") {
+					transform.parent.transform.parent.GetChild (0).gameObject.SetActive (true);
+					transform.parent.transform.parent.GetChild (0).SetParent (GameObject.Find ("ActiveWalls").transform);
+				}
+				for (int i = 0; i < transform.parent.transform.parent.childCount; i++) {
+					transform.parent.transform.parent.GetChild (i).SetParent (GameObject.Find ("Enemies").transform);
+				}
                 chasing = true;
                 chaseePosition = other.gameObject.transform.position;
-				GetComponentInParent<Guard>().target = hit.collider.gameObject;
+				transform.parent.GetComponent<Guard>().target = hit.collider.gameObject;
             }
         }
         
@@ -57,9 +64,9 @@ public class GuardVisionCone : MonoBehaviour {
                 //If Object Is Player Start Chasing
                 if (hit.collider.gameObject.tag == "Player")
                 {
-                    GetComponentInParent<Guard>().patrolMode = false;                                       //Turn Patrol Mode Off
-					GetComponentInParent<Guard>().chaseMode = true;                                         //Turn Chase Mode On
-					GetComponentInParent<Guard>().target = hit.collider.gameObject;      //Set Player's Last Known Location
+					transform.parent.GetComponent<Guard>().patrolMode = false;                                       //Turn Patrol Mode Off
+					transform.parent.GetComponent<Guard>().chaseMode = true;                                         //Turn Chase Mode On
+					transform.parent.GetComponent<Guard>().target = hit.collider.gameObject;      //Set Player's Last Known Location
                 }
             }
         }

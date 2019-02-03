@@ -18,7 +18,7 @@ public class Couch : MonoBehaviour {
         {
             if (GameObject.Find("SleepMenu").transform.GetChild(0).gameObject.activeInHierarchy == true)
             GameObject.Find("SleepMenu").transform.GetChild(0).gameObject.SetActive(false);
-            SaveLoad.ResetPermancy();
+			SaveLoad.ResetPermancy(Inventory.saveFile);
         }
 	}
 
@@ -45,7 +45,7 @@ public class Couch : MonoBehaviour {
                         other.GetComponent<PlayerHealth>().health = other.GetComponent<PlayerHealth>().healthLimit;
                         
                         //SaveLoad.ResetPermancy ();
-                        SaveLoad.Save();
+						SaveLoad.Save(Inventory.saveFile);
 					}
 				} else {
 					other.gameObject.GetComponent<InventorySelect> ().ChangeItem ();

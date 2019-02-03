@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour {
 	void FixedUpdate () {
         //Movement
         Rigidbody rb = GetComponent<Rigidbody>();
-		CharacterController controller = GetComponent<CharacterController>();
+		//CharacterController controller = GetComponent<CharacterController>();
         
 		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		moveDirection = transform.TransformDirection(moveDirection);
@@ -43,11 +43,13 @@ public class Movement : MonoBehaviour {
         {
             moveDirection = Vector3.ClampMagnitude(moveDirection, speed);
 
+			moveDirection *= Time.timeScale;
+
             rb.MovePosition(transform.position + moveDirection);                //Speed Needs To Be 0.2
 
             //moveDirection.y -= gravity * Time.deltaTime;
             //controller.Move(moveDirection * Time.deltaTime);                  //Speed Needs To Be 9
-            if (Input.GetMouseButton(1) && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+			if (Input.GetKey(KeyCode.Space) && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             {
                 GetComponentInChildren<SpriteChange>().RollColour();
                 rollDirection = moveDirection;

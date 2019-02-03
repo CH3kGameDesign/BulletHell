@@ -105,11 +105,15 @@ public class InventorySelect : MonoBehaviour {
 				Destroy (GameObject.Find ("PlayerHands").transform.GetChild (i).gameObject);
 			}
 		}
+		if (GameObject.Find ("PlayerGunHands").transform.childCount != 0) {
+			for (int i = 0; i < GameObject.Find ("PlayerGunHands").transform.childCount; i++) {
+				Destroy (GameObject.Find ("PlayerGunHands").transform.GetChild (i).gameObject);
+			}
+		}
 
 
 		//string objectPath = Inventory.inventoryList [Inventory.inventorySelected];													*
 		string itemID = Inventory.inventoryList [Inventory.inventorySelected];														//
-		Debug.Log (itemID);																							//
 		//string[] objectPathParts = objectPath.Split(new string[] {"."}, System.StringSplitOptions.None);			*
 
 		//objectPathParts = objectPathParts[0].Split(new string[] {"/"}, System.StringSplitOptions.None);			*
@@ -132,29 +136,54 @@ public class InventorySelect : MonoBehaviour {
 			currentObject.GetComponent<BoxCollider> ().enabled = false;
 		}
 
-        if (currentObject.tag == "Gun")
-        {
-            Cursor.SetCursor(reticle, new Vector2(32, 32), CursorMode.ForceSoftware);
-        }
-        else
-        {
-            Cursor.SetCursor(cursor, new Vector2(7, 2), CursorMode.ForceSoftware);
-        }
+        Cursor.SetCursor(cursor, new Vector2(7, 2), CursorMode.ForceSoftware);
     }
+
+	public void ChangeGun ()
+	{
+		if (GameObject.Find ("PlayerHands").transform.childCount != 0) {
+			for (int i = 0; i < GameObject.Find ("PlayerHands").transform.childCount; i++) {
+				Destroy (GameObject.Find ("PlayerHands").transform.GetChild (i).gameObject);
+			}
+		}
+		if (GameObject.Find ("PlayerGunHands").transform.childCount != 0) {
+			for (int i = 0; i < GameObject.Find ("PlayerGunHands").transform.childCount; i++) {
+				Destroy (GameObject.Find ("PlayerGunHands").transform.GetChild (i).gameObject);
+			}
+		}
+
+		string itemID = Inventory.gunList [Inventory.gunSelected];
+
+		LoadItem.Load(itemID);																					
+		UnityEngine.Object pPrefab = Resources.Load(LoadItem.NewItemPath);										
+
+		GameObject currentObject = (GameObject)GameObject.Instantiate(pPrefab, Vector3.zero, Quaternion.identity);
+		currentObject.transform.SetParent (GameObject.Find("PlayerGunHands").transform);
+		currentObject.transform.localRotation = Quaternion.Euler (Vector3.zero);
+		currentObject.transform.localPosition = new Vector3(0, 0, 0.5f);
+
+		if (currentObject.GetComponent<BoxCollider> ()) {
+			currentObject.GetComponent<BoxCollider> ().enabled = false;
+		}
+
+		if (currentObject.tag == "Gun")
+		{
+			Cursor.SetCursor(reticle, new Vector2(32, 32), CursorMode.ForceSoftware);
+		}
+	}
 
     private void UpdateIcons()
-    {
-        for (int i = 0; i < 12; i++)
-        {
-            GameObject.Find("InventoryBarItem (" + i + ")").GetComponent<Image>().sprite = Resources.Load<Sprite>("Prefabs/Icons/" + Inventory.inventoryList[i]);
+	{
+		if (GameObject.Find ("InventoryBarItem (0)") != null) {
+			for (int i = 0; i < 12; i++) {
+				GameObject.Find ("InventoryBarItem (" + i + ")").GetComponent<Image> ().sprite = Resources.Load<Sprite> ("Prefabs/Icons/" + Inventory.inventoryList [i]);
 
-            if (Inventory.inventoryListAmount[i] != 0)
-            {
-                GameObject.Find("InventoryBarText (" + i + ")").GetComponent<Text>().text = Inventory.inventoryListAmount[i].ToString();
-            } else
-            {
-                GameObject.Find("InventoryBarText (" + i + ")").GetComponent<Text>().text = "";
-            }
-        }
-    }
+				if (Inventory.inventoryListAmount [i] != 0) {
+					GameObject.Find ("InventoryBarText (" + i + ")").GetComponent<Text> ().text = Inventory.inventoryListAmount [i].ToString ();
+				} else {
+					GameObject.Find ("InventoryBarText (" + i + ")").GetComponent<Text> ().text = "";
+				}
+			}
+		}
+	}
 }

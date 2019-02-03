@@ -29,12 +29,14 @@ public class CharCustomization : MonoBehaviour {
     public List<int> Selections = new List<int> ();
     public List<Text> SelectionNo = new List<Text> ();
 
+	public Text Name;
+
     MeshRenderer[] mRenderers;
     MeshRenderer[] mNCRenderers;
 
     // Use this for initialization
     void Start () {
-        SaveLoad.Load();
+		SaveLoad.Load(Inventory.saveFile);
 
         Hats = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().Hats;
         Faces = UnityMaterialHolder.GetComponent<UnityMaterialHolder>().Faces;
@@ -216,9 +218,11 @@ public class CharCustomization : MonoBehaviour {
             PlayerMaterialHolder.featureSlider3[i] = Sliders3[i].value;
             PlayerMaterialHolder.featureSlider4[i] = Sliders4[i].value;
         }
-        SaveLoad.Save();
-        //MainMenuManager.GetComponent<MainMenuManager>().ChangeMenu(0);
-        SceneManager.LoadScene(1);
+		Debug.Log ("PlayerName == " + Name.text);
+		Inventory.name = Name.text;
+		SaveLoad.Save(Inventory.saveFile);
+		MainMenuManager.GetComponent<MainMenuManager>().StartGame();
+        //SceneManager.LoadScene(1);
     }
 
     public void CancelFeatureValues ()

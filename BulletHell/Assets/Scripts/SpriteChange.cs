@@ -10,7 +10,7 @@ public class SpriteChange : MonoBehaviour {
 	private GameObject sprites;
     private GameObject NCSprites;
 
-    private Vector3 pastPosition = Vector3.zero;
+	private GameObject activeGun;
 
     MeshRenderer[] mRenderers;
     MeshRenderer[] mNCRenderers;
@@ -21,7 +21,6 @@ public class SpriteChange : MonoBehaviour {
         playerModel = transform.GetChild(0).gameObject;
         sprites = transform.GetChild(1).gameObject;
         NCSprites = transform.GetChild(2).gameObject;
-        pastPosition = transform.position;
 
         mRenderers = sprites.GetComponentsInChildren<MeshRenderer>();
         mNCRenderers = NCSprites.GetComponentsInChildren<MeshRenderer>();
@@ -73,7 +72,8 @@ public class SpriteChange : MonoBehaviour {
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 1);
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 2);
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_FrameRate", 30);
-                if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+                //if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+				if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                 {
                     sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 2);
                     sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 4);
@@ -87,7 +87,8 @@ public class SpriteChange : MonoBehaviour {
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 1);
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 2);
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_FrameRate", 30);
-                    if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+					//if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+					if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                     {
                         NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 2);
                         NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 4);
@@ -104,7 +105,8 @@ public class SpriteChange : MonoBehaviour {
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 3);
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 2);
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_FrameRate", 30);
-                if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+				//if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+				if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                 {
                     sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 4);
                     sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 4);
@@ -118,7 +120,8 @@ public class SpriteChange : MonoBehaviour {
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 3);
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 2);
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_FrameRate", 30);
-                    if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+					//if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+					if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                     {
                         NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 4);
                         NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 4);
@@ -135,7 +138,8 @@ public class SpriteChange : MonoBehaviour {
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 5);
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 2);
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_FrameRate", 30);
-                if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+				//if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+				if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                 {
                     sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 6);
                     sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 4);
@@ -149,7 +153,8 @@ public class SpriteChange : MonoBehaviour {
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 5);
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 2);
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_FrameRate", 30);
-                    if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+					//if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+					if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                     {
                         NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 6);
                         NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 4);
@@ -166,7 +171,8 @@ public class SpriteChange : MonoBehaviour {
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 7);
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 2);
                 sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_FrameRate", 30);
-                if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+				//if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+				if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                 {
                     sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 8);
                     sprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 4);
@@ -180,7 +186,8 @@ public class SpriteChange : MonoBehaviour {
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 7);
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 2);
                     NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_FrameRate", 30);
-                    if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+					//if (transform.position.x != pastPosition.x || transform.position.z != pastPosition.z)
+					if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                     {
                         NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Animation", 8);
                         NCSprites.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetFloat("_Frames", 4);
@@ -190,7 +197,12 @@ public class SpriteChange : MonoBehaviour {
             }
         }
 
-        pastPosition = transform.position;
+		if (GameObject.Find ("PlayerHands").transform.childCount != 0) {
+			activeGun = GameObject.Find ("PlayerHands").transform.GetChild (0).gameObject;
+			if (activeGun.tag == "Gun") {
+				activeGun.GetComponentInChildren<SpriteChangeGuns> ().playerModel = playerModel;
+			}
+		}
 	}
 
     public void RollColour()
