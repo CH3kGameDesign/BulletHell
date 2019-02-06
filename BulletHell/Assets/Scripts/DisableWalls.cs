@@ -16,6 +16,9 @@ public class DisableWalls : MonoBehaviour {
 			for (int i = 0; i < transform.childCount; i++) {
 				Destroy (transform.GetChild (i).gameObject);
 			}
+			Inventory.enemiesNear = false;
+		} else {
+			Inventory.enemiesNear = true;
 		}
 	}
 }

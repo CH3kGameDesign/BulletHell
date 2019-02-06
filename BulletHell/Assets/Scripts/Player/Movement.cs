@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour {
 		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= 200;
-        if (rolling == false)
+		if (rolling == false && Inventory.menuOpen == false)
         {
             moveDirection = Vector3.ClampMagnitude(moveDirection, speed);
 

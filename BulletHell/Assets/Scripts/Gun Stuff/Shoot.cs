@@ -87,7 +87,7 @@ public class Shoot : MonoBehaviour {
 				//activeGun.GetComponentInChildren<SpriteChangeGuns> ().playerModel = this.gameObject;
 				activeGun.transform.localPosition = Vector3.Lerp (activeGun.transform.localPosition, new Vector3 (activeGun.transform.localPosition.x, activeGun.transform.localPosition.y, 0), 0.1f);
 				aSources = activeGun.GetComponents<AudioSource> ();
-				if (Input.GetMouseButton (0) && canShoot == true && GetComponentInParent<Movement> ().rolling == false) {
+				if (Input.GetMouseButton (0) && canShoot == true && GetComponentInParent<Movement> ().rolling == false && Inventory.menuOpen == false) {
 					charge += Time.deltaTime;
 					if (charge >= activeGun.GetComponent<GunData> ().chargeTime)
 						Fire ();

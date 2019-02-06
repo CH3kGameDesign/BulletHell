@@ -26,6 +26,8 @@ public class PlayerHealth : MonoBehaviour {
 
 		rectTransform = healthBar.GetComponent<RectTransform>();
 		uiOffset = new Vector2((float)Camera.main.pixelWidth / 2f, (float)Camera.main.pixelHeight / 2f);
+
+		Inventory.player = this.gameObject;
 	}
 	
 	// Update is called once per frame
@@ -71,6 +73,6 @@ public class PlayerHealth : MonoBehaviour {
 		Vector2 proportionalPosition = new Vector2 (ViewportPosition.x * Camera.main.pixelWidth, ViewportPosition.y * Camera.main.pixelHeight);
 
 			// Set the position and remove the screen offset
-		rectTransform.localPosition = proportionalPosition - uiOffset;
+		rectTransform.localPosition = (proportionalPosition - uiOffset)/1.8f;
 	}
 }

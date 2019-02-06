@@ -20,6 +20,10 @@ public class Inventory
     public static int inventorySelected = 0;
 	public static int gunSelected = 0;
 
+	public static bool menuOpen = false;
+	public static bool enemiesNear = false;
+
+	public static GameObject player;
 
     public static int health = 10;
     public static float ammo = 60;

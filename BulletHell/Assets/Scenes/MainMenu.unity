@@ -12344,9 +12344,13 @@ MonoBehaviour:
   Hats:
   - {fileID: 2100000, guid: a70ca50e738a23345a15c48ff0d3f98c, type: 2}
   - {fileID: 2100000, guid: 50171f63de4613247a3a74f8e7dcc9f7, type: 2}
+  - {fileID: 2100000, guid: 81ff4a1ce5fe5be4ca6e8f5cd3f0a1dc, type: 2}
+  - {fileID: 2100000, guid: ecb35d83d1778664ba30fb6eca07cdf3, type: 2}
   Faces:
   - {fileID: 2100000, guid: 7f2fedc0c6e5060478864349fbb2e292, type: 2}
   - {fileID: 2100000, guid: 90dad7abf57b69a459c13a83b7a02402, type: 2}
+  - {fileID: 2100000, guid: e46b1f36af20f50468f028201ac79d11, type: 2}
+  - {fileID: 2100000, guid: 6dd8bca5a4eb40440a9169ad1f59792c, type: 2}
   Shirts:
   - {fileID: 2100000, guid: 6eb227e84aa97604ea03c4f7c958b684, type: 2}
   Pants:
@@ -12354,9 +12358,13 @@ MonoBehaviour:
   NCHats:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   NCFaces:
   - {fileID: 0}
   - {fileID: 2100000, guid: 8040a8b7a18847b4ca5e1b528829dd2b, type: 2}
+  - {fileID: 2100000, guid: 5cfe6ff0fb19ef9488a7ecf054d38c77, type: 2}
+  - {fileID: 2100000, guid: 2e7f270bb8a0bb240aa819ae1ca5600e, type: 2}
   NCShirts:
   - {fileID: 0}
   NCPants:
